@@ -1,7 +1,7 @@
 import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 
-export default class Login extends React.Component {
+export default class Signup extends React.Component {
 
   constructor(props) {
     super(props);
@@ -15,22 +15,16 @@ export default class Login extends React.Component {
   login(e) {
     e.preventDefault();
     // Here, we call an external AuthService. We’ll create it in the next step
-    Auth.login(this.state.user, this.state.password)
-      .catch(function(err) {
-        console.log('Error logging in', err);
-      });
+    console.log('Error logging in', err);
   }
 
   render() {
     return (
-      <h3 class="text-center">Login In</h3>
+  <h3 class="text-center">Sign In</h3>
     );
   }
 }
 
-Login.contextTypes = {
-  router: React.PropTypes.func
-};
-
 // We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
-//reactMixin(Login.prototype, React.addons.LinkedStateMixin);
+reactMixin(Signup.prototype, React.addons.LinkedStateMixin);
+

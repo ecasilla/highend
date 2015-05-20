@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function(options) {
   var cssLoaders = 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions';
@@ -26,6 +26,9 @@ module.exports = function(options) {
       path: options.production ? './dist' : path.join(__dirname,'./build'),
       publicPath: '',
       filename: options.production ? 'app.[hash].js' : 'app.js',
+    },
+    eslint: {
+      configFile: '.eslintrc'
     },
     module: {
       preLoaders: options.lint ? [
@@ -92,7 +95,7 @@ module.exports = function(options) {
       }),
       new ExtractTextPlugin("app.[hash].css"),
       new HtmlWebpackPlugin({
-        template: './conf/tmpl.html'
+        template: './config/tmpl.html'
       }),
     ] : []
   };

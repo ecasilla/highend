@@ -2,11 +2,17 @@ import 'babel/polyfill';
 import React from 'react';
 import {RouteHandler} from 'react-router';
 import FastClick from 'fastclick';
+import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
 export default class App extends React.Component {
-  render() {
+  constructor (props) {
+    super(props);
+  }
+  render () {
     return (
-    <RouteHandler/>
+      <div className="Content">
+        <RouteHandler/>
+      </div>
     );
   }
 }
