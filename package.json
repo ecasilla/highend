@@ -1,7 +1,7 @@
 {
-  "name": "demo-react",
+  "name": "highend-installations",
   "version": "1.0.0",
-  "description": "demo",
+  "description": "",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start config/karma.conf.js --single-run",
     "test:watch": "./node_modules/karma/bin/karma start config/karma.conf.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ecasilla/react-demo.git"
+    "url": "https://github.com/ecasilla/highend.git"
   },
   "keywords": [],
   "author": "Ernie Casilla <ecasilla@icloud.com> (http://github.com/ecasilla)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ecasilla/react-demo/issues"
+    "url": "https://github.com/ecasilla/highend/issues"
   },
-  "homepage": "https://github.com/ecasilla/react-demo",
+  "homepage": "https://github.com/ecasilla/highend",
   "devDependencies": {
     "autoprefixer-loader": "^1.2.0",
     "babel-core": "^5.4.3",
