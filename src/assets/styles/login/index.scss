@@ -1,0 +1,160 @@
+/* Roboto  */
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300');
+
+/* General */
+
+body {
+  color: #666666;
+  font-size: 13px;
+  line-height: 23px;
+  background: #fff;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #666;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  margin: 2px 0px;
+  padding: 0px;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 45px;
+}
+
+h2 {
+  font-size: 25px;
+  line-height: 40px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 37px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 33px;
+}
+
+h5 {
+  font-size: 15px;
+  line-height: 30px;
+}
+
+h6 {
+  font-size: 13px;
+  line-height: 28px;
+}
+
+p {
+  margin: 2px 0px;
+  padding: 0px;
+  margin-bottom: 5px;
+  line-height: 28px;
+}
+
+a {
+  text-decoration: none;
+  color: #777;
+  &:hover, &:active, &:focus {
+    outline: 0;
+    text-decoration: none;
+    color: #999;
+  }
+}
+
+hr {
+  margin: 10px 0px;
+  padding: 0px;
+  border-top: 0px;
+  border-bottom: 1px solid #eee;
+}
+
+:focus {
+  outline: none;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+/* General:END */
+
+/* UI X */
+
+body {
+  background: url("../../images/login/background.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.login {
+  margin: 50px 0px;
+  .ui-form {
+    max-width: 45%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 60px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+    h3 {
+      font-size: 13px;
+      line-height: 13px;
+      margin: 15px 0px 25px 0px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+  }
+  form {
+    margin-bottom: 15px;
+    color: #fff;
+    input, textarea {
+      box-shadow: none !important;
+      padding: 6px 5px;
+      color: #fff;
+      border: 0px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      background: transparent;
+      border-radius: 0px;
+    }
+    ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .btn {
+      border: 0px;
+      border-radius: 25px;
+      padding: 10px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: transparent;
+      margin-top: 15px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      &:hover {
+        background: #fff;
+        color: #666;
+      }
+    }
+  }
+  .social a {
+    display: block;
+    margin-bottom: 15px;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+
