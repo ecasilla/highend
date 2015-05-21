@@ -10,7 +10,18 @@ export default class App extends React.Component {
   }
   render () {
     return (
+    <div>
+      <nav>
+        <ul>
+          <li><a href="/#">Home</a></li>
+          <li><a href="/#About">About</a></li>
+          <li><a href="/#Contact">Contact</a></li>
+          <li><a href="/#login">login</a></li>
+          <li><a href="/#signup">Register</a></li>
+        </ul>
+      </nav>
       <RouteHandler/>
+    </div>
     );
   }
 }
