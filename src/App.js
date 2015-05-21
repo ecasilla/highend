@@ -16,6 +16,7 @@ export default class App extends React.Component {
           <li><a href="/#">Home</a></li>
           <li><a href="/#About">About</a></li>
           <li><a href="/#Contact">Contact</a></li>
+          <li><a href="/#Portfolio">Portfolio</a></li>
           <li><a href="/#login">login</a></li>
           <li><a href="/#signup">Register</a></li>
         </ul>

@@ -7,7 +7,10 @@ export default class Gallery extends React.Component {
   
   render() {
     return (
-      <h1>Gallery?</h1>
+      <div>
+        <h1>Gallery?</h1>
+        <li><a href="/#Portfolio/item">Item</a></li>
+      </div>
     );
   }
 };

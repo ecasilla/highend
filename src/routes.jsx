@@ -21,8 +21,7 @@ export default (
     <Route name="signup" path="/signup" handler={Signup}/>
     //Portfolio
     <Route name="potfolio" path="/portfolio" handler={Portfolio}/>
-    <Route name="potfolio_item" path="/portfolio/:item" handler={Item}/>
-    </Route>
+      <Route name="potfolio_item" path="/portfolio/:item" handler={Item}/>
     //404 Not Found
    <NotFoundRoute handler={NotFound} />
   </Route>
