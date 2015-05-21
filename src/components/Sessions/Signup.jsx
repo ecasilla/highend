@@ -20,7 +20,7 @@ export default class Signup extends React.Component {
 
   render() {
     return (
-  <h3 class="text-center">Sign In</h3>
+  <h3 className="text-center">Sign In</h3>
     );
   }
 }

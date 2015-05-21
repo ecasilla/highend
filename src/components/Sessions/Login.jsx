@@ -23,7 +23,7 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <h3 class="text-center">Login In</h3>
+      <h3 className="text-center">Login In</h3>
     );
   }
 }
