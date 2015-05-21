@@ -1,7 +1,8 @@
 import React from 'react';
 import App from './App';
 import {Route, NotFoundRoute} from 'react-router';
-import Home from './components/Home';
+import Home from './components/Home/Home';
+import About from './components/Home/About';
 import NotFound from './components/not-found';
 import Login from './components/Sessions/Login';
 import Signup from './components/Sessions/Signup';
