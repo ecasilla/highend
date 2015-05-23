@@ -4,7 +4,7 @@ import {Route, NotFoundRoute} from 'react-router';
 import Home from './components/Home/Home';
 import About from './components/Home/About';
 import Contact from './components/Home/Contact';
-import NotFound from './components/not-found';
+import NotFound from './components/Pages/not-found';
 import Login from './components/Sessions/Login';
 import Signup from './components/Sessions/Signup';
 import Portfolio from './components/Portfolio/gallery';

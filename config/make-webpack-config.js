@@ -2,17 +2,19 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+import writeStats from './utils/write-stats';
 
-module.exports = function(options) {
+export default function(options) {
   var cssLoaders = 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions';
   var sassLoaders = cssLoaders + '!sass-loader?indentedSyntax=sass';
 
   if (options.production) {
     cssLoaders = ExtractTextPlugin.extract('style-loader', cssLoaders.substr(cssLoaders.indexOf('!')));
     sassLoaders = ExtractTextPlugin.extract('style-loader', sassLoaders.substr(sassLoaders.indexOf('!')));
+    require('./utils/clean-dist')();
   }
 
-  var jsLoaders = ['babel-loader'];
+  var jsLoaders = ['babel-loader','flowcheck'];
 
   return {
     entry: [
@@ -24,8 +26,9 @@ module.exports = function(options) {
     devtool: options.devtool,
     output: {
       path: options.production ? './dist' : path.join(__dirname,'./build'),
+      filename: options.production ? '[name]-[chunkhash].js' : 'app.js',
+      chunkFilename: '[name]-[chunkhash].js',
       publicPath: '',
-      filename: options.production ? 'app.[hash].js' : 'app.js',
     },
     eslint: {
       configFile: '.eslintrc'
@@ -33,19 +36,19 @@ module.exports = function(options) {
     module: {
       preLoaders: options.lint ? [
         {
-          test: /\.jsx?$/,
+          test: /\.js$|.jsx?$/,
           exclude: /node_modules/,
-          loader: 'eslint-loader',
+          loaders: ['eslint', 'jscs']
         }
       ] : [],
       loaders: [
         {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loaders: jsLoaders,
+          test: /\.json$/,
+          loader: 'json'
         },
         {
-          test: /\.jsx$/,
+        {
+          test: /\.js$|.jsx$/,
           exclude: /node_modules/,
           loaders: options.production ? jsLoaders : ['react-hot-loader'].concat(jsLoaders),
         },
@@ -58,16 +61,12 @@ module.exports = function(options) {
           loader: sassLoaders,
         },
         {
-          test: /\.png$/,
-          loader: "url-loader?limit=100000&mimetype=image/png",
+          test: /\.(jpe?g|png|gif|svg|woff|eot|ttf)$/,
+          loader: 'url?limit=10000&name=[sha512:hash:base64:7].[ext]'
         },
         {
-          test: /\.svg$/,
-          loader: "url-loader?limit=100000&mimetype=image/svg+xml",
-        },
-        {
-          test: /\.gif$/,
-          loader: "url-loader?limit=100000&mimetype=image/gif",
+          test: /\.scss$/,
+          loader: 'style!css?sourceMap!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap'
         },
         {
           test: /\.jpg$/,
@@ -76,7 +75,8 @@ module.exports = function(options) {
       ]
     },
     resolve: {
-      extensions: ['', '.js', '.jsx'],
+      extensions: ['', '.js', '.json', '.jsx'],
+      modulesDirectories: ['node_modules', 'src']
     },
     plugins: options.production ? [
       // Important to keep React file size down
@@ -88,15 +88,36 @@ module.exports = function(options) {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-        }
+      compress: {
+        warnings: false,
+        screw_ie8: true,
+        sequences: true,
+        dead_code: true,
+        drop_debugger: true,
+        comparisons: true,
+        conditionals: true,
+        evaluate: true,
+        booleans: true,
+        loops: true,
+        unused: true,
+        hoist_funs: true,
+        if_return: true,
+        join_vars: true,
+        cascade: true,
+        drop_console: true
+      },
+      output: {
+        comments: false
+      }
       }),
-      new ExtractTextPlugin("app.[hash].css"),
+      new ExtractTextPlugin("[name]-[chunkhash].css"),
       new HtmlWebpackPlugin({
         template: './config/tmpl.html'
       }),
+      function () { this.plugin('done', writeStats); },
+      
     ] : []
   };
 };
