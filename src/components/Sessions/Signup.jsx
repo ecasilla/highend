@@ -26,5 +26,5 @@ export default class Signup extends React.Component {
 }
 
 // We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
-reactMixin(Signup.prototype, React.addons.LinkedStateMixin);
+ReactMixin(Signup.prototype, React.addons.LinkedStateMixin);
 

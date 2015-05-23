@@ -33,4 +33,4 @@ Login.contextTypes = {
 };
 
 // We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
-reactMixin(Login.prototype, React.addons.LinkedStateMixin);
+ReactMixin(Login.prototype, React.addons.LinkedStateMixin);

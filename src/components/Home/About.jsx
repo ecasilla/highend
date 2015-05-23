@@ -1,4 +1,5 @@
 import React from 'react';
+import {paper} from 'material-ui';
 
 export default class About extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 import React from 'react/addons';
 
-import NotFound from 'components/Pages/not-found';
+import NotFound from '../../components/Pages/not-found';
 
 describe('NotFoundPage', () => {
 
@@ -13,8 +13,8 @@ describe('NotFoundPage', () => {
   });
 
   afterEach(() => {
-    if (instance && instance.isMounted()) {
-      React.unmountComponentAtNode(instance.getDOMNode());
+    if (instance) {
+      React.unmountComponentAtNode(React.findDOMNode(instance));
     }
   });
 

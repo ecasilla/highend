@@ -1,6 +1,4 @@
-const webpack = require('./make-webpack-config');
-
 module.exports = require('./make-webpack-config')({
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   lint: false,
 });

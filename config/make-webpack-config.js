@@ -2,9 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-import writeStats from './utils/write-stats';
 
-export default function(options) {
+module.exports = function(options) {
   var cssLoaders = 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions';
   var sassLoaders = cssLoaders + '!sass-loader?indentedSyntax=sass';
 
@@ -26,8 +25,7 @@ export default function(options) {
     devtool: options.devtool,
     output: {
       path: options.production ? './dist' : path.join(__dirname,'./build'),
-      filename: options.production ? '[name]-[chunkhash].js' : 'app.js',
-      chunkFilename: '[name]-[chunkhash].js',
+      filename: options.production ? 'app.[hash].js' : 'app.js',
       publicPath: '',
     },
     eslint: {
@@ -47,9 +45,8 @@ export default function(options) {
           loader: 'json'
         },
         {
-        {
           test: /\.js$|.jsx$/,
-          exclude: /node_modules/,
+          exclude: /(node_modules|bower_components)/,
           loaders: options.production ? jsLoaders : ['react-hot-loader'].concat(jsLoaders),
         },
         {
@@ -76,16 +73,15 @@ export default function(options) {
     },
     resolve: {
       extensions: ['', '.js', '.json', '.jsx'],
-      modulesDirectories: ['node_modules', 'src']
     },
     plugins: options.production ? [
       // Important to keep React file size down
       new webpack.DefinePlugin({
         "process.env": {
+          "BROWSER" : JSON.stringify(true),
           "NODE_ENV": JSON.stringify("production")
         }
       }),
-      new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurenceOrderPlugin(),
@@ -112,7 +108,7 @@ export default function(options) {
         comments: false
       }
       }),
-      new ExtractTextPlugin("[name]-[chunkhash].css"),
+      new ExtractTextPlugin("app.[hash].css"),
       new HtmlWebpackPlugin({
         template: './config/tmpl.html'
       }),
