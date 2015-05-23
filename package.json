@@ -5,7 +5,7 @@
   "scripts": {
     "test": "./node_modules/karma/bin/karma start config/karma.conf.js --single-run",
     "test:watch": "./node_modules/karma/bin/karma start config/karma.conf.js",
-    "test:coverage": "./node_modules/karma/bin/karma start config/karma.coverage.conf.js --single-run",
+    "test:coverage": "./node_modules/karma/bin/karma start config/karma.coverage.conf.js --single-run --debug",
     "start": "./node_modules/.bin/webpack-dev-server --config config/webpack.config.js --hot --progress --colors --inline --content-base ./build",
     "build": "./node_modules/.bin/webpack --config config/webpack.production.js",
     "test:ci": "./node_modules/karma/bin/karma start config/karma.ci.conf.js --single-run"
@@ -51,6 +51,8 @@
     "karma-notify-reporter": "^0.1.1",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-webpack": "^1.5.0",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
     "mocha": "^2.2.5",
     "node-sass": "^3.1.1",
     "react-a11y": "git://github.com/iam4x/react-a11y.git#packaged",

@@ -1,5 +1,6 @@
 import React from 'react';
-import {paper} from 'material-ui';
+import {Paper,FlatButton} from 'material-ui';
+require('../../assets/styles/material-ui/main.less');
 
 export default class About extends React.Component {
   constructor(props) {
@@ -8,7 +9,9 @@ export default class About extends React.Component {
   
   render() {
     return (
-      <h1>About?</h1>
+      <div>
+        <FlatButton label="About" />
+      </div>
     );
   }
 };
