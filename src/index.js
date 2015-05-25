@@ -2,7 +2,6 @@ import React from 'react';
 import Router from 'react-router';
 import routes from './routes';
 import RouterContainer from './services/RouterContainer';
-import Modernizr from './assets/vendor/modernizr';
 import './components/preloader.jsx';
 import Pace from './assets/vendor/pace';
 
@@ -23,10 +22,3 @@ function RouterInit(Handler){
 }
 
 Router.run(routes, RouterInit);
-
-//if(Modernizr.history){
-  //Router.run(routes, ReactRouter.HistoryLocation, RouterInit);
-//}else{
-  //Router.run(routes, RouterInit);
-//}
-

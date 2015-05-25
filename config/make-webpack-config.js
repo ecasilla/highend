@@ -116,6 +116,9 @@ module.exports = function(options) {
       new HtmlWebpackPlugin({
         template: './config/tmpl.html'
       }),
+      new webpack.ProvidePlugin({ 
+        React: ‘react’
+      })
       function () { this.plugin('done', writeStats); },
       
     ] : []

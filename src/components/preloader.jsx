@@ -1,23 +1,26 @@
-var Ploader = React.createClass({
-  getInitialState: function() {
-    return {
+import React from 'react';
+
+export default class Ploader extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       display: 'none'
     };
-  },
-  show: function(cb) {
+  }
+  show(cb) {
     this.setState({display: 'block'}, cb);
-  },
-  hide: function(cb) {
+  }
+  hide(cb) {
     this.setState({display: 'none'}, cb);
-  },
-  render: function() {
+  }
+  render() {
     return (
       <div className='preloader' style={{display: this.state.display}}>
         <img src='../assets/images/preloader.gif' width='128' height='128' />
       </div>
     );
   }
-});
+};
 
 window.Preloader = React.render(<Ploader />, document.getElementById('app-preloader'));
 
