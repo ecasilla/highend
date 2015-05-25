@@ -1,0 +1,8 @@
+//Normalize
+@import "../../../../node_modules/modularized-normalize-scss/normalize";
+
+@import "base/base";
+@import "bourbon/bourbon";
+
+//Importing Material ui last so it can be overwriting
+@import "../material-ui-sass/material-ui/main";
