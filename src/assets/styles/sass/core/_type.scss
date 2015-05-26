@@ -81,7 +81,7 @@ small,
 
 mark,
 .mark {
-  background-color: $state-warning-bg;
+  background-color: $yellow-400;
   padding: .2em;
 }
 
@@ -99,18 +99,7 @@ mark,
 
 // Contextual colors
 .text-muted {
-  color: $text-muted;
-}
-
-
-
-// Page header
-// -------------------------
-
-.page-header {
-  padding-bottom: (($line-height-computed / 2) - 1);
-  margin: ($line-height-computed * 2) 0 $line-height-computed;
-  border-bottom: 1px solid $page-header-border-color;
+  color: $grey-400;
 }
 
 
@@ -160,7 +149,7 @@ dl {
 }
 dt,
 dd {
-  line-height: $line-height-base;
+  line-height: $base-line-height;
 }
 dt {
   font-weight: bold;
@@ -179,7 +168,7 @@ dd {
     @include clearfix; // Clear the floated `dt` if an empty `dd` is present
   }
 
-  @media (min-width: $grid-float-breakpoint) {
+  @media (min-width: $screen-sm-min) {
     dt {
       float: left;
       width: ($dl-horizontal-offset - 20);
@@ -230,7 +219,7 @@ blockquote {
   .small {
     display: block;
     font-size: 80%; // back to default font-size
-    line-height: $line-height-base;
+    line-height: $base-line-height;
     color: $blockquote-small-color;
 
     &:before {
@@ -265,5 +254,5 @@ blockquote.pull-right {
 address {
   margin-bottom: $line-height-computed;
   font-style: normal;
-  line-height: $line-height-base;
+  line-height: $base-line-height;
 }
