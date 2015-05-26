@@ -1,6 +1,6 @@
 import React from 'react';
 import {Paper,FlatButton} from 'material-ui';
-require('../../assets/styles/material-ui/main.less');
+import Header from '../Shared/Header'
 
 export default class About extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ export default class About extends React.Component {
   render() {
     return (
       <div>
+        <Header/>
         <FlatButton label="About" />
       </div>
     );

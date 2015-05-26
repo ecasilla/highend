@@ -4,7 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function(options) {
-  var cssLoaders = 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions';
+  var cssLoaders = 'style-loader!css-loader!';
   var sassLoaders = cssLoaders + '!sass-loader?indentedSyntax=sass';
 
   if (options.production) {
@@ -67,7 +67,7 @@ module.exports = function(options) {
         },
         {
           test: /\.scss$/,
-          loader: 'style!css?sourceMap!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap'
+          loader: sassLoaders
         },
         {
           test: /\.jpg$/,
@@ -117,8 +117,8 @@ module.exports = function(options) {
         template: './config/tmpl.html'
       }),
       new webpack.ProvidePlugin({ 
-        React: ‘react’
-      })
+        React: "react"
+      }),
       function () { this.plugin('done', writeStats); },
       
     ] : []

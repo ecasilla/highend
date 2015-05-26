@@ -8,7 +8,7 @@ import Pace from './assets/vendor/pace';
 RouterContainer.set(Router);
 RouterContainer.set(Router.create({ routes }));
 Pace.once('hide', function() {
-  $('#pace-loader').removeClass('pace-big').addClass('pace-small');
+  document.getElementById('#pace-loader').classList.remove('pace-big').className('pace-small');
 });
 
 function RouterInit(Handler){

@@ -3,6 +3,7 @@
 
 @import "base/base";
 @import "bourbon/bourbon";
+@import "neat/neat";
 
 //Importing Material ui last so it can be overwriting
-@import "../material-ui-sass/material-ui/main";
+@import "../material-ui/main";
