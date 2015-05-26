@@ -1,7 +1,10 @@
+//All base classes for elements are in plugins/base
+@import "plugins/plugins";
+
 // Core setup for the website
 @import "core/core";
 
-@import "plugins/plugins";
+@import "modules/modules";
 
 #app{
    @include outer-container(100%);

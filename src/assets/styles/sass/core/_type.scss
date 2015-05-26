@@ -65,7 +65,7 @@ p {
   line-height: 1.4;
 
   @media (min-width: $screen-sm-min) {
-    font-size: ($font-size-base * 1.5);
+    font-size: ($base-font-size * 1.5);
   }
 }
 
@@ -76,7 +76,7 @@ p {
 // Ex: (12px small font / 14px base font) * 100% = about 85%
 small,
 .small {
-  font-size: floor((100% * $font-size-small / $font-size-base));
+  font-size: floor((100% * $font-size-small / $base-font-size));
 }
 
 mark,
