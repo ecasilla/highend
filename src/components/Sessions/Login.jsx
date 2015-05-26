@@ -1,6 +1,6 @@
 import React from 'react/addons';
 import ReactMixin from 'react-mixin';
-import {FlatButton} from 'material-ui';
+import {RaisedButton,TextField,Checkbox} from 'material-ui';
 
 export default class Login extends React.Component {
 
@@ -34,19 +34,19 @@ export default class Login extends React.Component {
           <form>
             {/* Email */}
             <div className="form-group">
-              <input type="email" className="form-control" placeholder="Enter Email" />
+              <TextField floatingLabelText="Email" type="email"/>
             </div>
             {/* Password */}
             <div className="form-group">
-              <input type="password" className="form-control" placeholder="Enter Password" />
+              <TextField floatingLabelText="Password" type="password" />
             </div>
             <div className="checkbox">
               <label>
-                <input type="checkbox" /> Remember Me
+                <Checkbox name="rememberMe" label="Remember Me" />
               </label>
             </div>
-            <FlatButton label="Login In" primary={true} onClick={this.login} />
-            <FlatButton label="Sign Up" primary={true}  onClick={this.login}/>
+            <RaisedButton className="button" label="Login In" onClick={this.login} />
+            <RaisedButton className="button" label="Sign Up"  onClick={this.login}/>
           </form>
           <div className="text-center white">Social media...</div>
           <div className="social">

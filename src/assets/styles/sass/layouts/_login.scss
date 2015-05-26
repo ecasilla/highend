@@ -1,71 +1,69 @@
-body {
-  background: url("../../images/login/background.jpg") no-repeat;
+#app {
+  @include outer-container;
+  background: url("../../images/login/background.jpg");
   background-attachment: fixed;
   background-size: cover;
-}
-
-.login_container{
-  @include outer-container;
-  .login {
-    @include row();
-    margin: 50px 0px;
-    .ui-form {
-      @include span-columns(9);
-      @include padding(60px 35px null);
-      max-width: 45%;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 5px;
-      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
-      h3 {
-        font-size: 13px;
-        line-height: 13px;
-        margin: 15px 0px 25px 0px;
-        text-transform: uppercase;
-        color: #fff;
-      }
-    
-    &.form {
-      margin-bottom: 15px;
-      color: #fff;
-      input, textarea {
-        box-shadow: none !important;
-        padding: 6px 5px;
-        color: $white;
-        border: 0px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-        background: transparent;
-        border-radius: 0px;
-      }
-      ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
-        color: rgba(255, 255, 255, 0.5);
-      }
-      &.button {
-        padding: 10px 20px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        text-transform: uppercase;
-        font-weight: 600;
-        background: transparent;
-        margin-top: 15px;
-        @include transition(all,0.5s, ease);
-        &:hover {
-          background: $white;
-          color: $grey-400;
+  .login-container{
+    @include span-columns(9);
+    @include shift(1);
+    .login {
+      @include shift(1);
+      .ui-form {
+        @include padding(60px 35px null);
+        max-width: 35%;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+        h3 {
+          font-size: 13px;
+          line-height: 13px;
+          margin: 15px 0px 25px 0px;
+          text-transform: uppercase;
+        }
+        form {
+          margin-bottom: 15px;
+          color: #fff;
+          .mui-text-field {
+            width:100%;
+            box-shadow: none !important;
+            padding: 6px 5px;
+            color: $white;
+            border: 0px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            background: transparent;
+            border-radius: 0px;
+          }
+          ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+            color: rgba(255, 255, 255, 0.5);
+          }
+          .button {
+            margin: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            font-weight: 600;
+            background: transparent;
+            margin-top: 15px;
+            color: $primary-color;
+            @include transition(all,0.5s, ease);
+            &:hover {
+              background: $accent-color;
+            }
+          }
+        }
+        .social a {
+          display: block;
+          margin-bottom: 15px;
+          color: $white;
+          padding: 8px 20px;
+          border-radius: 25px;
+          text-align: center;
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: 600;
         }
       }
     }
-    .social a {
-      display: block;
-      margin-bottom: 15px;
-      color: $white;
-      padding: 8px 20px;
-      border-radius: 25px;
-      text-align: center;
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-   }
   }
 }

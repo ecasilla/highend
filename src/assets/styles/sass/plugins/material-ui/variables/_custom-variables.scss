@@ -6,12 +6,20 @@ $headingFontFamily: "Roboto", sans-serif !default;
 $contentFontFamily: "Roboto", sans-serif !default;
 
 //App Colors
-$primary-1-color: $cyan-500 !default;
-$primary-2-color: $cyan-700 !default;
-$primary-3-color: $cyan-100 !default;
-$accent-1-color: $pink-A200 !default;
-$accent-2-color: $pink-A400 !default;
-$accent-3-color: $pink-A100 !default;
+$primary-color:   $blue-500 !default;
+$primary-1-color:   $blue-500 !default;
+$primary-2-color: $blue-700 !default;
+$primary-3-color: $blue-100 !default;
+
+$accent-color:   $grey-500 !default;
+$accent-1-color: $grey-200 !default;
+$accent-2-color: $grey-400 !default;
+$accent-3-color: $grey-100 !default;
+
+$primary-text-color:   #212121;
+$secondary-text-color: #727272;
+
+$divider-color:        #B6B6B6;
 
 //Text Colors
 $body-text-color: $dark-black !default;
@@ -20,19 +28,19 @@ $body-text-color: $dark-black !default;
 $border-color: $grey-300 !default;
 
 //Component Colors
-$app-bar-color: $primary-1-color !default;
+$app-bar-color: $primary-color !default;
 $app-bar-text-color: $dark-white !default;
 $canvas-color: $white !default;
 $drop-down-menu-icon-color: $min-black !default;
 $left-nav-color: $white !default;
 $subheader-border-color: $border-color !default;
-$subheader-text-color: $primary-1-color !default;
+$subheader-text-color: $primary-color !default;
 
 //Disabled Colors
 $disabled-color: rgba($body-text-color, 0.3);
 
 //Date Picker
-$date-picker-color: $primary-1-color !default;
+$date-picker-color: $primary-color !default;
 $date-picker-text-color: $white !default;
 $date-picker-calendar-text-color: $body-text-color !default;
 $date-picker-select-color: $primary-2-color !default;
@@ -61,8 +69,8 @@ $flat-button-primary-hover-color: lighten($accent-1-color, 32%) !default;
 $flat-button-primary-text-color: $accent-1-color !default;
 $flat-button-primary-ripple-color: rgba($flat-button-primary-text-color, 0.2) !default;
 $flat-button-primary-focus-ripple-color: rgba($flat-button-primary-ripple-color, 0.2) !default;
-$flat-button-secondary-hover-color: lighten($primary-1-color, 52%) !default;
-$flat-button-secondary-text-color: $primary-1-color !default;
+$flat-button-secondary-hover-color: lighten($primary-color, 52%) !default;
+$flat-button-secondary-text-color: $primary-color !default;
 $flat-button-secondary-ripple-color: rgba($flat-button-secondary-text-color, 0.2) !default;
 $flat-button-secondary-focus-ripple-color: rgba($flat-button-secondary-ripple-color, 0.2) !default;
 $flat-button-disabled-text-color: rgba($flat-button-text-color, 0.3) !default;
@@ -77,8 +85,8 @@ $raised-button-primary-hover-color: darken($accent-1-color, 15%) !default;
 $raised-button-primary-text-color: $white !default;
 $raised-button-primary-ripple-color: rgba($white, 0.50) !default;
 $raised-button-primary-focus-ripple-color: $raised-button-primary-ripple-color !default;
-$raised-button-secondary-color: $primary-1-color !default;
-$raised-button-secondary-hover-color: darken($primary-1-color, 4%) !default;
+$raised-button-secondary-color: $primary-color !default;
+$raised-button-secondary-hover-color: darken($primary-color, 4%) !default;
 $raised-button-secondary-text-color: $white !default;
 $raised-button-secondary-ripple-color: rgba($white, 0.50) !default;
 $raised-button-secondary-focus-ripple-color: $raised-button-secondary-ripple-color !default;
@@ -92,7 +100,7 @@ $floating-action-button-icon-color: $white !default;
 $floating-action-button-hover-color: $raised-button-primary-hover-color !default;
 $floating-action-button-ripple-color: $raised-button-primary-ripple-color !default;
 $floating-action-button-focus-ripple-color: $raised-button-primary-ripple-color !default;
-$floating-action-button-secondary-color: $primary-1-color !default;
+$floating-action-button-secondary-color: $primary-color !default;
 $floating-action-button-secondary-icon-color: $white !default;
 $floating-action-button-secondary-hover-color: $raised-button-secondary-hover-color !default;
 $floating-action-button-secondary-ripple-color: $raised-button-secondary-ripple-color !default;
@@ -108,20 +116,20 @@ $input-error-color: red !default;
 $input-bar-height: 2px !default;
 
 // switches
-$switches-ripple-color: rgba($primary-1-color, 0.2) !default;
+$switches-ripple-color: rgba($primary-color, 0.2) !default;
 
 // radio button
 $radio-button-size: 24px !default;
 $radio-button-border-color:  $body-text-color !default;
 $radio-button-background-color: white !default;
-$radio-button-checked-color: $primary-1-color !default;
-$radio-button-required-color: $primary-1-color !default;
+$radio-button-checked-color: $primary-color !default;
+$radio-button-required-color: $primary-color !default;
 $radio-button-disabled-color: $disabled-color !default;
 
 // checkbox
 $checkbox-box-color: $body-text-color !default;
-$checkbox-checked-color: $primary-1-color !default;
-$checkbox-required-color: $primary-1-color !default;
+$checkbox-checked-color: $primary-color !default;
+$checkbox-required-color: $primary-color !default;
 $checkbox-disabled-color: $disabled-color !default;
 
 // snackbar
@@ -131,10 +139,10 @@ $mui-snackbar-action-color: $accent-1-color !default;
 
 // toggle
 $toggle-size: 20px !default;
-$toggle-thumb-on-color: $primary-1-color !default;
+$toggle-thumb-on-color: $primary-color !default;
 $toggle-thumb-off-color: $grey-50 !default;
 $toggle-thumb-disabled-color: $grey-400 !default;
-$toggle-thumb-required-color: $primary-1-color !default;
+$toggle-thumb-required-color: $primary-color !default;
 $toggle-track-on-color: fade-out($toggle-thumb-on-color, 0.5) !default;
 $toggle-track-off-color: $min-black !default;
 $toggle-track-disabled-color: $faint-black !default;
