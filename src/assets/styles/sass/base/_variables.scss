@@ -17,13 +17,25 @@ $stack-pt-serif   : 'PT Serif', serif;
 
 $base-font-family: $stack-roboto;
 $heading-font-family: $base-font-family;
+$heading-font-weight:    500 !default;
+$heading-line-height:    1.1 !default;
+$heading-color:          inherit !default;
 
 // Font Sizes
 $base-font-size: 1em;
+$font-size-large:         ceil(($base-font-size * 1.25)) !default; // ~18px
+$font-size-small:         ceil(($base-font-size * 0.85)) !default; // ~12px
 
+$font-size-h1:            floor(($base-font-size * 2.6)) !default; // ~36px
+$font-size-h2:            floor(($base-font-size * 2.15)) !default; // ~30px
+$font-size-h3:            ceil(($base-font-size * 1.7)) !default; // ~24px
+$font-size-h4:            ceil(($base-font-size * 1.25)) !default; // ~18px
+$font-size-h5:            $base-font-size !default;
+$font-size-h6:            ceil(($base-font-size * 0.85)) !default; // ~12px
 // Line height
 $base-line-height: 1.5;
 $heading-line-height: 1.2;
+$line-height-computed:    floor(($base-font-size * $base-line-height)) !default; // ~20px
 
 // Other Sizes
 $base-border-radius: 3px;

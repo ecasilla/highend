@@ -2,14 +2,11 @@ import React from 'react';
 import Router from 'react-router';
 import routes from './routes';
 import RouterContainer from './services/RouterContainer';
-import './components/preloader.jsx';
 import Pace from './assets/vendor/pace';
+require('./assets/styles/pace/pace.css');
 
 RouterContainer.set(Router);
 RouterContainer.set(Router.create({ routes }));
-Pace.once('hide', function() {
-  document.getElementById('#pace-loader').classList.remove('pace-big').className('pace-small');
-});
 
 function RouterInit(Handler){
   if(window.hasOwnProperty('ga') && typeof window.ga === 'function') {
