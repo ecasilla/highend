@@ -1,16 +1,7 @@
-//Normalize --reset
-@import "../../../../node_modules/modularized-normalize-scss/normalize";
-
-//Useful mixins and folder hierarchy plus a neat grid framework
-@import "bourbon/bourbon";
-@import "base/base";
-@import "neat/neat";
-
 // Core setup for the website
 @import "core/core";
 
-//Importing Material ui last so it can be overwriting
-@import "../material-ui/main";
+@import "plugins/plugins";
 
 #app{
    @include outer-container(100%);
