@@ -1,69 +1,71 @@
-body{
-  background: url("../../../images/login/background.jpg") no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
+/*body{*/
+  /*background: url("../../../images/login/background.jpg") no-repeat;*/
+  /*background-attachment: fixed;*/
+  /*background-size: cover;*/
+/*}*/
+
 .login-container{
-  @include outer-container(100%);
+  /*@include outer-container(100%);*/
   height:100%
-}
-.login {
-  @include row();
-  margin: 50px 0px;
-  .ui-form {
-    @include padding(60px,35px,null,null)
-    max-width: 45%;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
-    h3 {
-      font-size: 13px;
-      line-height: 13px;
-      margin: 15px 0px 25px 0px;
-      text-transform: uppercase;
-      color: #fff;
-    }
-  }
-  &.form {
-    margin-bottom: 15px;
-    color: #fff;
-    input, textarea {
-      box-shadow: none !important;
-      padding: 6px 5px;
-      color: #fff;
-      border: 0px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-      background: transparent;
-      border-radius: 0px;
-    }
-    ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-    &.button {
-      padding: 10px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      text-transform: uppercase;
-      font-weight: 600;
-      background: transparent;
-      margin-top: 15px;
-      @include transition(all 0.5s ease);
-      &:hover {
-        background: #fff;
-        color: #666;
+
+  .login {
+    @include row();
+    margin: 50px 0px;
+    .ui-form {
+      @include padding(60px,35px,null,null)
+      max-width: 45%;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+      h3 {
+        font-size: 13px;
+        line-height: 13px;
+        margin: 15px 0px 25px 0px;
+        text-transform: uppercase;
+        color: #fff;
       }
     }
-  }
-  .social a {
-    display: block;
-    margin-bottom: 15px;
-    color: #fff;
-    padding: 8px 20px;
-    border-radius: 25px;
-    text-align: center;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 600;
+    &.form {
+      margin-bottom: 15px;
+      color: #fff;
+      input, textarea {
+        box-shadow: none !important;
+        padding: 6px 5px;
+        color: #fff;
+        border: 0px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        background: transparent;
+        border-radius: 0px;
+      }
+      ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      &.button {
+        padding: 10px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        font-weight: 600;
+        background: transparent;
+        margin-top: 15px;
+        @include transition(all 0.5s ease);
+        &:hover {
+          background: #fff;
+          color: #666;
+        }
+      }
+    }
+    .social a {
+      display: block;
+      margin-bottom: 15px;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 25px;
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
   }
 }

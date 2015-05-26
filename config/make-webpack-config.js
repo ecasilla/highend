@@ -77,7 +77,7 @@ module.exports = function(options) {
     },
     resolve: {
       root: path.resolve('./src'),
-      extensions: ['', '.js', '.json', '.jsx'],
+      extensions: ['', '.js', '.json', '.jsx','.scss'],
       modulesDirectories: ['bower_components', 'node_modules'],
     },
     plugins: options.production ? [

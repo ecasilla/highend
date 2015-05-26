@@ -6,7 +6,7 @@
     "test": "./node_modules/karma/bin/karma start config/karma.conf.js --single-run",
     "test:watch": "./node_modules/karma/bin/karma start config/karma.conf.js",
     "test:coverage": "./node_modules/karma/bin/karma start config/karma.coverage.conf.js --single-run --debug",
-    "start": "./node_modules/.bin/webpack-dev-server --config config/webpack.config.js --hot --progress --colors --inline --content-base ./build",
+    "start": "./node_modules/.bin/webpack-dev-server --config config/webpack.config.js --hot --display-error-details --colors --inline --content-base ./build",
     "build": "./node_modules/.bin/webpack --config config/webpack.production.js",
     "test:ci": "./node_modules/karma/bin/karma start config/karma.ci.conf.js --single-run"
   },
@@ -52,10 +52,10 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-webpack": "^1.5.0",
     "mocha": "^2.2.5",
-    "node-sass": "^3.1.1",
+    "node-sass": "2.1.1",
     "react-a11y": "git://github.com/iam4x/react-a11y.git#packaged",
     "react-hot-loader": "^1.2.7",
-    "sass-loader": "^1.0.2",
+    "sass-loader": "0.4.2",
     "style-loader": "^0.12.2",
     "url-loader": "^0.5.6",
     "webpack": "^1.9.6",
@@ -78,8 +78,5 @@
     "react-mixin": "^1.2.2",
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7"
-  },
-  "engines": {
-    "iojs": "^1.7.0"
   }
 }

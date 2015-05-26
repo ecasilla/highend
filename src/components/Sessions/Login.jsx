@@ -2,7 +2,7 @@ import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 import {FlatButton} from 'material-ui';
 
-
+require('../../assets/styles/sass/layouts/_login.scss');
 export default class Login extends React.Component {
 
   constructor(props) {
@@ -16,6 +16,7 @@ export default class Login extends React.Component {
   // This will be called when the user clicks on the login button
   login(e) {
     e.preventDefault();
+    console.log("Login Called!");
     // Here, we call an external AuthService. We’ll create it in the next step
     //Auth.login(this.state.user, this.state.password)
       //.catch(function(err) {
@@ -45,8 +46,8 @@ export default class Login extends React.Component {
                 <input type="checkbox" /> Remember Me
               </label>
             </div>
-            <FlatButton label="Login In" primary={true} onClick={login} />
-            <FlatButton label="Sign Up" primary={true}  onClick={login}/>
+            <FlatButton label="Login In" primary={true} onClick={this.login} />
+            <FlatButton label="Sign Up" primary={true}  onClick={this.login}/>
           </form>
           <div className="text-center white">Social media...</div>
           <div className="social">
