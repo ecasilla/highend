@@ -2,7 +2,6 @@ import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 import {FlatButton} from 'material-ui';
 
-require('../../assets/styles/sass/layouts/_login.scss');
 export default class Login extends React.Component {
 
   constructor(props) {

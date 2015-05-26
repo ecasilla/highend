@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function(options) {
   var cssLoaders = 'style-loader!css-loader!';
-  var sassLoaders = cssLoaders + '!sass-loader?indentedSyntax=sass';
+  var sassLoaders = cssLoaders + '!sass-loader?outputStyle=expanded&';
 
   if (options.production) {
     cssLoaders = ExtractTextPlugin.extract('style-loader', cssLoaders.substr(cssLoaders.indexOf('!')));
@@ -54,20 +54,16 @@ module.exports = function(options) {
           loader: cssLoaders,
         },
         {
+        test: /\.scss$/,
+        loader: sassLoaders
+        },
+        {
           test: /\.sass$/,
           loader: sassLoaders,
         },
         {
-          test: /\.less$/,
-          loader: 'style-loader!css-loader!less-loader'
-        },
-        {
           test: /\.(jpe?g|png|gif|svg|woff|eot|ttf)$/,
           loader: 'url?limit=10000&name=[sha512:hash:base64:7].[ext]'
-        },
-        {
-          test: /\.scss$/,
-          loader: sassLoaders
         },
         {
           test: /\.jpg$/,

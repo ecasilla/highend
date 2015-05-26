@@ -9,6 +9,7 @@
 @import "core/core";
 
 @import "modules/modules";
+@import "layouts/layouts";
 
 #app{
    @include outer-container(100%);
