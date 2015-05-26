@@ -76,7 +76,9 @@ module.exports = function(options) {
       ]
     },
     resolve: {
+      root: path.resolve('./src'),
       extensions: ['', '.js', '.json', '.jsx'],
+      modulesDirectories: ['bower_components', 'node_modules','src'],
     },
     plugins: options.production ? [
       // Important to keep React file size down

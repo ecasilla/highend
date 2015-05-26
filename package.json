@@ -72,7 +72,6 @@
     "flux": "^2.0.3",
     "material-ui": "^0.7.5",
     "material-ui-sass": "^0.7.5",
-    "modernizr": "^3.0.0-alpha.4",
     "modularized-normalize-scss": "git://github.com/hail2u/normalize.scss.git",
     "node-libs-browser": "^0.5.2",
     "object-assign": "^2.0.0",
