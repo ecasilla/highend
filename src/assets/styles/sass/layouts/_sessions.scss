@@ -1,0 +1,56 @@
+.session-container{
+  @include size(100%);
+  background: url("../../images/login/background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  .session {
+    @include padding(10% null);
+    @include span-columns(12);
+    .ui-form {
+      @include padding(60px 35px null);
+      max-width: 35%;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.05);
+      h4 {
+        font-size: $font-size-h4;
+        line-height: $base-line-height;
+        @include margin(15px 0px 25px 0px);
+        text-transform: uppercase;
+        color: $white;
+      }
+      form {
+        margin-bottom: 15px;
+        color: #fff;
+        .mui-text-field {
+          width:100%;
+          box-shadow: none !important;
+          padding: 6px 5px;
+          color: $accent-color;
+          border: 0px;
+          background: transparent;
+          border-radius: 0px;
+        }
+        ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+        .button {
+          @include margin(30px 30px);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+          font-weight: 600;
+          background: transparent;
+          margin-top: 15px;
+          color: $primary-color;
+          @include transition(all,0.5s, ease);
+          &:hover {
+            background: $accent-color;
+          }
+        }
+      }
+    }
+  }
+}
+

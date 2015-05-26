@@ -1,5 +1,18 @@
 /* Social Media */
 
+.social a {
+  display: block;
+  margin-bottom: 15px;
+  color: $white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  width:inherit;
+}
+
 .facebook {
   background: #3280e7;
   &:hover {

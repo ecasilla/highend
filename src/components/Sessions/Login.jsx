@@ -1,6 +1,7 @@
 import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 import {RaisedButton,TextField,Checkbox} from 'material-ui';
+import SocialSessions from '../Shared/SocialSessions';
 
 export default class Login extends React.Component {
 
@@ -26,8 +27,8 @@ export default class Login extends React.Component {
 
   render() {
     return (
-    <div className="login-container">
-    <div className="login">
+    <div className="session-container">
+    <div className="session">
         {/* Login Form */}
         <div className="ui-form">
           <h3 className="text-center">Sign In</h3>
@@ -48,22 +49,14 @@ export default class Login extends React.Component {
             <RaisedButton className="button" label="Login In" onClick={this.login} />
             <RaisedButton className="button" label="Sign Up"  onClick={this.login}/>
           </form>
-          <div className="text-center white">Social media...</div>
-          <div className="social">
-            <a href="#" className="facebook"><i className="fa fa-facebook" /> &nbsp; Login with Facebook</a>
-            <a href="#" className="twitter"><i className="fa fa-twitter" /> &nbsp; Login with Twitter</a>
-            <a href="#" className="google-plus"><i className="fa fa-google-plus" /> &nbsp; Login with Google Plus</a>
+          <SocialSessions/>
           </div>
-        </div>
       </div>
       </div>
     );
   }
 }
 
-Login.contextTypes = {
-  router: React.PropTypes.func
-};
 
 // We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
 ReactMixin(Login.prototype, React.addons.LinkedStateMixin);
