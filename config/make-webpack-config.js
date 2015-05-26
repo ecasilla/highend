@@ -62,12 +62,15 @@ module.exports = function(options) {
           loader: sassLoaders,
         },
         {
-          test: /\.(jpe?g|png|gif|svg|woff|eot|ttf)$/,
-          loader: 'url?limit=10000&name=[sha512:hash:base64:7].[ext]'
+          test: /\.(jpeg|gif|svg|woff|eot|ttf)$/,
+          loader: 'url?limit=1000&name=[sha512:hash:base64:7].[ext]'
         },
         {
-          test: /\.jpg$/,
-          loader: "file-loader",
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          loaders: [
+            'file?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          ]
         },
       ]
     },
