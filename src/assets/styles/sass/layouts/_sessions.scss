@@ -1,5 +1,5 @@
 .session-container{
-  @include size(100%);
+  @include outer-container(100%);
   background: url("../../images/login/background.jpg");
   background-attachment: fixed;
   background-size: cover;
@@ -7,17 +7,8 @@
   .session {
     @include padding(10% null);
 
-
     .ui-form {
       @include padding(60px 35px null);
-
-      @include media( $mobile ) {
-        @include span-columns(4);
-      }
-
-      @include media( $tablet ) {
-        @include span-columns(8);
-      }
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -59,18 +50,30 @@
 
 .session-container{
   .session{
+    @include media($lg-desktop){
+      @include span-columns(8);
+      @include shift(4);
+    }
     @include media($desktop){
       @include span-columns(6);
       @include shift(3);
-    }
-
-    @include media( $mobile ) {
-      @include span-columns(4);
-      @include shift(1);
     }
     @include media( $tablet ) {
       @include span-columns(6);
       @include shift(2);
     }
+    @include media( $mobile ) {
+      @include span-columns(4);
+      @include shift(1);
+    }
   }
+  .ui-form {
+    @include media( $mobile ) {
+      @include span-columns(4);
+    }
+
+    @include media( $tablet ) {
+      @include span-columns(8);
+    }
+  }  
 }
