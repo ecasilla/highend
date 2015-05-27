@@ -7,7 +7,7 @@ import PasswordValidator  from './PasswordValidator';
 import classNames from 'classnames';
 
 
-export default class Input extends BaseComponent{
+export default class Input extends BaseComponent {
 
   constructor(props) {
     super(props);
@@ -151,7 +151,7 @@ export default class Input extends BaseComponent{
   // validator function
   checkRules(value) {
     var validData = {
-      minChars: !_.isEmpty(value) ? value.length >= parseInt(this.state.minCharacters) : false,
+      minChars: !_.isEmpty(value) ? value.length >= parseInt(this.state.minCharacters,10) : false,
       capitalLetters: !_.isEmpty(value) ? this.countCapitals(value) : false,
       numbers: !_.isEmpty(value) ? this.countNumbers(value) > 0 : false,
       words: !_.isEmpty(value) ? !this.checkWords(value) : false
@@ -196,7 +196,7 @@ export default class Input extends BaseComponent{
     var validator;
 
     if (this.state.validator) {
-      validator = < PasswordValidator
+      validator = <PasswordValidator
       ref = "passwordValidator"
       visible = {
         this.state.validatorVisible
@@ -232,7 +232,7 @@ export default class Input extends BaseComponent{
       <div className={inputGroupClasses}>
 
       <label className="input_label" htmlFor={this.props.text}>
-      <span className="label_text">{this.props.text}</span > < /label>
+      <span className="label_text">{this.props.text}</span></label>
 
       <input 
       {...this.props}
@@ -245,9 +245,9 @@ export default class Input extends BaseComponent{
       onFocus={this.handleFocus}
       onBlur={this.handleBlur}
       autoComplete="off"
-      / >
+      />
 
-      < InputError
+      <InputError
       visible = {
         this.state.errorVisible
       }
@@ -257,15 +257,12 @@ export default class Input extends BaseComponent{
       />
 
       <div className="validationIcons">
-      <i className="input_error_icon" onMouseEnter={this.mouseEnterError}> <Icon type="circle_error"/ > < /i>
-      <i className="input_valid_icon"> <Icon type="circle_tick"/ > < /i>
-      </div >
+      <i className="input_error_icon" onMouseEnter={this.mouseEnterError}> <Icon type="circle_error"/> </i>
+      <i className="input_valid_icon"> <Icon type="circle_tick"/> </i>
+      </div>
 
-      {
-        validator
-      }
-
-      < /div>
+      {validator}
+      </div>
     );
   }
 };

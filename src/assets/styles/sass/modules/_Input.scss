@@ -9,10 +9,10 @@
     @include align-items(center);
     @include position(absolute,0 null null 0);
     @include size(100%);
+    @include padding(0 0 0 15px);
     @include user-select(none);
     z-index: 10;
     cursor: text;
-    padding: 0 0 0 15px;
     .label_text {
       font-size: 18px;
       font-weight: 100;
@@ -102,27 +102,27 @@
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .input_group {
     min-height: 64px;
     margin-bottom: 0;
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .input_group label.input_label .label_text {
     font-size: 16px;
     font-weight: 300;
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .input_group label.input_label {
     height: 64px;
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .input_group {
     &.input_focused label.input_label, &.input_hasValue label.input_label {
       height: 40px;
@@ -130,32 +130,29 @@
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .input_group input.input {
-    font-size: 14px;
-    padding: 15px 15px 0 15px;
+    font-size: $base-font-size;
+    @include padding(15px 15px 0 15px);
     height: 64px;
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .input_group i {
     height: 64px;
   }
 }
 
 .error_container {
-  position: absolute;
+  @include position(absolute,0 null null 100%);
   opacity: 0;
-  top: 0;
-  left: 100%;
   white-space: nowrap;
   line-height: 70px;
-  width: auto;
-  height: 70px;
   background: #f16767;
-  padding: 0 20px 0 20px;
-  color: white;
+  @include size(auto 70px);
+  @include padding(0 20px 0 20px);
+  color: $white;
   font-size: 14px;
   font-weight: 100;
   letter-spacing: .6px;
@@ -179,8 +176,8 @@
     @include position(relative,-13px null null 0);
     line-height: 30px;
     font-size: 12px;
-    @include padding(0 15px 0 15px);
     font-weight: 300;
+    @include padding(0 15px 0 15px);
   }
 }
 

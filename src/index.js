@@ -7,7 +7,13 @@ require('./assets/styles/pace/pace.css');
 
 RouterContainer.set(Router);
 RouterContainer.set(Router.create({ routes }));
+var paceOptions = {
+  ajax: true, 
+  document: true,
+  eventLag: true
+};
 
+Pace.stop();
 function RouterInit(Handler){
   if(window.hasOwnProperty('ga') && typeof window.ga === 'function') {
     window.ga('send', 'pageview', {

@@ -15,7 +15,8 @@ export default class Login extends BaseComponent {
     'handleConfirmPasswordInput',
     'handleEmailInput',
     'isConfirmedPassword',
-    'validateEmail'
+    'validateEmail',
+    'saveAndContinue'
     );
     this.state = {
       email: null,
@@ -49,7 +50,7 @@ export default class Login extends BaseComponent {
       var data = {
         email: this.state.email
       };
-      alert('Thanks.');
+     console.log("LOGGED IN " + this.state.email);
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
@@ -96,7 +97,7 @@ export default class Login extends BaseComponent {
         {/* Login Form */}
         <div className="ui-form">
           <h3 className="text-center">Sign In</h3>
-          <form>
+          <form  onSubmit={this.saveAndContinue}>
             {/* Email */}
             <div className="form-group">
               <Input 
@@ -143,7 +144,7 @@ export default class Login extends BaseComponent {
             <div className="checkbox">
               <label> <Checkbox name="Remember Me" label="Remember Me"/> </label>
             </div>
-            <RaisedButton className="button" label="Login" onClick={this.login} />
+            <RaisedButton type="submit" className="button" label="Login" />
             <RaisedButton className="button" label="Sign Up"  onClick={this.login}/>
           </form>
           <SocialSessions/>
