@@ -5,15 +5,8 @@
   min-height: 70px;
   margin-bottom: 10px;
   label.input_label {
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: -ms-flex;
-    display: flex;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    align-items: center;
+    @include display(flex);
+    @include align-items(center);
     @include position(absolute,0 null null 0);
     @include size(100%);
     @include user-select(none);
@@ -47,23 +40,18 @@
     -moz-box-shadow: none;
     box-shadow: none;
     width: 100%;
-    -webkit-box-sizing: border-box;
-    -khtml-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
     @include transition(all 0.7s ease-in-out);
     z-index: 1;
     -webkit-appearance: none;
     border: none;
     outline: none;
-    padding: 18px 15px 0 15px;
-    margin: 0 auto 13px auto;
+    @include padding(18px 15px 0 15px);
+    @include margin(0 auto 13px auto);
     color: #363b4a;
     letter-spacing: .7px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    font-size: 16px;
+    font-size: $base-font-size;
     height: 70px;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px white inset;
@@ -71,35 +59,17 @@
     }
   }
   i {
-    top: 0;
-    right: 15px;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: -ms-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    align-items: center;
-    width: 20px;
-    height: 70px;
+    @include position(absolute,0 15px null null);
+    @include display(flex);
+    @include align-items(center);
+    @include flex-direction(row);
+    @include size(20px 70px);
     z-index: 1000;
-    position: absolute;
     z-index: 100;
     svg {
       opacity: 0;
-      -webkit-transition: all 0.2s ease-in-out;
-      -moz-transition: all 0.2s ease-in-out;
-      -ms-transition: all 0.2s ease-in-out;
-      -o-transition: all 0.2s ease-in-out;
-      transition: all 0.2s ease-in-out;
-      width: 20px;
-      height: 20px;
+      @include transition(all 0.2 ease-in-out);
+      @include size(20px 20px);
     }
     &.input_error_icon {
       z-index: 10;
@@ -184,21 +154,12 @@
   width: auto;
   height: 70px;
   background: #f16767;
-  -webkit-box-sizing: border-box;
-  -khtml-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
   padding: 0 20px 0 20px;
   color: white;
   font-size: 14px;
   font-weight: 100;
   letter-spacing: .6px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+  @include user-select(none);
   @include transition(all 0.2s ease-in-out);
   &.visible {
     @include transform(translateX(0px));
@@ -213,25 +174,23 @@
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
-  .error_container {
-    position: relative;
-    top: -13px;
-    left: 0;
+@include media(min-width 0px max-width 870px, 6) {
+.error_container {
+    @include position(relative,-13px null null 0);
     line-height: 30px;
     font-size: 12px;
-    padding: 0 15px 0 15px;
+    @include padding(0 15px 0 15px);
     font-weight: 300;
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .error_container.visible {
     height: 30px;
   }
 }
 
-@media only screen and (min-width: 0px) and (max-width: 870px) {
+@include media(min-width 0px max-width 870px, 6) {
   .error_container.invisible {
     height: 0;
     line-height: 0;

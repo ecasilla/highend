@@ -143,7 +143,7 @@ export default class Login extends BaseComponent {
             <div className="checkbox">
               <label> <Checkbox name="Remember Me" label="Remember Me"/> </label>
             </div>
-            <RaisedButton className="button" label="Login In" onClick={this.login} />
+            <RaisedButton className="button" label="Login" onClick={this.login} />
             <RaisedButton className="button" label="Sign Up"  onClick={this.login}/>
           </form>
           <SocialSessions/>
