@@ -3,6 +3,7 @@
   background: url("../../images/login/background.jpg");
   background-attachment: fixed;
   background-size: cover;
+  overflow:hidden;
   .session {
     @include padding(10% null);
     @include span-columns(12);
