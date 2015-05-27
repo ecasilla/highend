@@ -1,7 +1,6 @@
 import React from 'react/addons';
 import _ from 'lodash';
-
-const cx = React.addons.classSet;
+import classNames from 'classnames';
 
 export default class InputError extends React.Component{
 
@@ -13,7 +12,7 @@ export default class InputError extends React.Component{
  }
 
  render(){ 
-   var errorClass = cx({
+   var errorClass = classNames({
      'error_container':   true,
      'visible':           this.props.visible,
      'invisible':         !this.props.visible

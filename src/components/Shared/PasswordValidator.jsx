@@ -1,13 +1,13 @@
-var React = require('react/addons');
-var _ = require('lodash');
-var Icon = require('./Icon');
+import React from 'react';
+import _ from 'lodash';
+import Icon from './Icon';
+import classNames from 'classnames';
 
-var cx = React.addons.classSet;
 
-var PasswordValidator = React.createClass({
-
-  getInitialState: function() {
-    return {
+export default class PasswordValidator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       value: null,
       minCharacters: this.props.minCharacters,
       requireCapitals: this.props.requireCapitals,
@@ -15,25 +15,22 @@ var PasswordValidator = React.createClass({
       forbiddenWords: this.props.forbiddenWords,
       name: this.props.name
     };
-  },
+  }
 
-  render: function() {
-    var validatorClass = cx({
+  render() {
+    var validatorTitle;
+    var validatorClass = classNames({
       'password_validator': true,
       'visible': this.props.visible,
       'invisible': !this.props.visible
     });
 
-    var forbiddenWords = this.state.forbiddenWords.map(function(word, i) {
-      return ( < span key = {
-        i
-      }
-      className = "bad_word" >
-      "{word}" < /span>
+    var forbiddenWords = this.state.forbiddenWords.map((word,i) => {
+      return ( 
+        <span key = {i} className = "bad_word"> "{word}"</span>
       )
     })
 
-    var validatorTitle;
 
     if(this.props.valid) {
       validatorTitle = 
@@ -55,30 +52,30 @@ var PasswordValidator = React.createClass({
 
       <ul className="rules_list">
 
-      <li className={cx({'valid': this.props.validData.minChars})}> 
+      <li className={classNames({'valid': this.props.validData.minChars})}> 
       <i className="icon_valid"> <Icon type="circle_tick_filled"/ > < /i>
       <i className="icon_invalid"> <Icon type="circle_error"/ > < /i>
       <span className="error_message">{this.state.minCharacters} characters minimum</span > < /li>
 
-      <li className={cx({'valid': this.props.validData.capitalLetters})}> 
+      <li className={classNames({'valid': this.props.validData.capitalLetters})}> 
       <i className="icon_valid"> <Icon type="circle_tick_filled"/ > < /i>
       <i className="icon_invalid"> <Icon type="circle_error"/ > < /i>
       <span className="error_message">Contains at least {this.state.requireCapitals} capital letter</span > < /li>
 
-      <li className={cx({'valid': this.props.validData.numbers})}> 
+      <li className={classNames({'valid': this.props.validData.numbers})}> 
       <i className="icon_valid"> <Icon type="circle_tick_filled"/ > < /i>
       <i className="icon_invalid"> <Icon type="circle_error"/ > < /i>
       <span className="error_message">Contains at least {this.state.requireNumbers} number</span > < /li>
 
-      <li className={cx({'valid': this.props.validData.words})}> 
+      <li className={classNames({'valid': this.props.validData.words})}> 
       <i className="icon_valid"> <Icon type="circle_tick_filled"/ > < /i>
       <i className="icon_invalid"> <Icon type="circle_error"/ > < /i>
       <span className="error_message">Can't be {forbiddenWords}</span > < /li>
 
-      </ul > < /div>
-      </div >
+      </ul> 
+      </div>
+      </div>
     )
   }
-})
+}
 
-module.exports = PasswordValidator;

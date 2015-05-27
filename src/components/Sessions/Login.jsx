@@ -1,20 +1,28 @@
 import React from 'react/addons';
+import BaseComponent from '../BaseComponent';
 import ReactMixin from 'react-mixin';
 import {RaisedButton,Checkbox} from 'material-ui';
 import SocialSessions from '../Shared/SocialSessions';
 import _ from 'lodash';
 import Input from '../Shared/Input';
 
-export default class Login extends React.Component {
+export default class Login extends BaseComponent {
 
   constructor(props) {
     super(props);
+    this._bind(
+    'handlePasswordInput',
+    'handleConfirmPasswordInput',
+    'handleEmailInput',
+    'isConfirmedPassword',
+    'validateEmail'
+    );
     this.state = {
       email: null,
       password: null,
       confirmPassword: null,
       forbiddenWords: ["password", "user", "username"]
-    }
+    };
   }
   handlePasswordInput (event) {
     if(!_.isEmpty(this.state.confirmPassword)){
@@ -35,28 +43,22 @@ export default class Login extends React.Component {
   saveAndContinue (e) {
     e.preventDefault();
 
-    var canProceed = this.validateEmail(this.state.email) 
-    && !_.isEmpty(this.state.statesValue)
-    && this.refs.password.isValid()
-    && this.refs.passwordConfirm.isValid();
+    var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid() && this.refs.passwordConfirm.isValid();
 
     if(canProceed) {
       var data = {
-        email: this.state.email,
-        state: this.state.statesValue
-      }
+        email: this.state.email
+      };
       alert('Thanks.');
     } else {
       this.refs.email.isValid();
-      this.refs.state.isValid();
-      this.refs.companyName.isValid();
       this.refs.password.isValid();
       this.refs.passwordConfirm.isValid();
     }
   }
 
   isConfirmedPassword (event) {
-    return (event == this.state.password)
+    return (event == this.state.password);
   }
 
   handleEmailInput(event){
@@ -98,7 +100,7 @@ export default class Login extends React.Component {
             {/* Email */}
             <div className="form-group">
               <Input 
-              floatingLabelText="Email" 
+              text="Email" 
               type="email"
               defaultValue={this.state.email} 
               validate={this.validateEmail}
@@ -112,7 +114,7 @@ export default class Login extends React.Component {
             {/* Password */}
             <div className="form-group">
               <Input 
-              floatingLabelText="Password" 
+              text="Password"
               type="password"
               ref="password"
               validator="true"
@@ -127,7 +129,6 @@ export default class Login extends React.Component {
             </div>
             <div className="form-group">
               <Input 
-              floatingLabelText="Confirm Password" 
               text="Confirm password" 
               ref="passwordConfirm"
               type="password"
@@ -140,7 +141,7 @@ export default class Login extends React.Component {
             </div>
 
             <div className="checkbox">
-              <label> <Checkbox name="rememberMe" label="Remember Me"/> </label>
+              <label> <Checkbox name="Remember Me" label="Remember Me"/> </label>
             </div>
             <RaisedButton className="button" label="Login In" onClick={this.login} />
             <RaisedButton className="button" label="Sign Up"  onClick={this.login}/>

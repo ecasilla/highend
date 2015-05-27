@@ -1,17 +1,27 @@
-import React  from 'react/addons';
+import React from 'react';
+import BaseComponent from '../BaseComponent';
 import _  from 'lodash';
 import Icon  from './Icon';
 import InputError  from './InputError';
 import PasswordValidator  from './PasswordValidator';
+import classNames from 'classnames';
 
-var cx = React.addons.classSet;
 
-
-export default class Input extends React.Component{
+export default class Input extends BaseComponent{
 
   constructor(props) {
     super(props);
     var valid = (this.props.isValid && this.props.isValid()) || true;
+    //BaseComponent._bind method is called here
+    this._bind(
+    'handleChange',
+    'validateInput',
+    'isValid',
+    'handleFocus',
+    'handleBlur',
+    'mouseEnterError',
+    'hideError',
+    'checkRules');
     this.state = {
       valid: valid,
       empty: _.isEmpty(this.props.value),
@@ -45,7 +55,7 @@ export default class Input extends React.Component{
     });
 
     if (this.props.validator) {
-      this.checkRules(event.target.value)
+      this.checkRules(event.target.value);
     }
 
     // call input's validation method
@@ -113,7 +123,7 @@ export default class Input extends React.Component{
     if (this.props.validator) {
       this.setState({
         errorVisible: false
-      })
+      });
     }
   }
 
@@ -145,14 +155,14 @@ export default class Input extends React.Component{
       capitalLetters: !_.isEmpty(value) ? this.countCapitals(value) : false,
       numbers: !_.isEmpty(value) ? this.countNumbers(value) > 0 : false,
       words: !_.isEmpty(value) ? !this.checkWords(value) : false
-    }
+    };
     var allValid = (validData.minChars && validData.capitalLetters && validData.numbers && validData.words);
 
     this.setState({
       isValidatorValid: validData,
       allValidatorValid: allValid,
       valid: allValid
-    })
+    });
   }
 
   countCapitals(value) {
@@ -167,13 +177,13 @@ export default class Input extends React.Component{
   checkWords(value) {
     return _.some(this.state.forbiddenWords,(word) => {
       var matched = (word === value) ? true : "";
-      return matched
-    })
+      return matched;
+    });
   }
 
   render() {
 
-    var inputGroupClasses = cx({
+    var inputGroupClasses = classNames({
       'input_group': true,
       'input_valid': this.state.valid,
       'input_error': !this.state.valid,
