@@ -33,7 +33,7 @@ export default class PasswordValidator extends React.Component {
 
 
     if(this.props.valid) {
-      validatorTitle = <h4 className="validator_title valid">{this.props.name}IS OK</h4>
+      validatorTitle = <h4 className="validator_title valid">{this.props.name} IS OK</h4>
     } else {
       validatorTitle = <h4 className="validator_title invalid">{this.props.name} RULES</h4>
 

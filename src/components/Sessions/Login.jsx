@@ -16,7 +16,7 @@ export default class Login extends BaseComponent {
     'handleEmailInput',
     'isConfirmedPassword',
     'validateEmail',
-    'saveAndContinue'
+    'login'
     );
     this.state = {
       email: null,
@@ -41,7 +41,7 @@ export default class Login extends BaseComponent {
     });
   }
 
-  saveAndContinue (e) {
+  login (e) {
     e.preventDefault();
 
     var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid() && this.refs.passwordConfirm.isValid();
@@ -51,6 +51,11 @@ export default class Login extends BaseComponent {
         email: this.state.email
       };
      console.log("LOGGED IN " + this.state.email);
+    // Here, we call an external AuthService. We’ll create it in the next step
+    //Auth.login(this.state.email, this.state.password)
+    //.catch(function(err) {
+    //console.log('Error logging in', err);
+    //});
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
@@ -77,27 +82,15 @@ export default class Login extends BaseComponent {
   isEmpty (value) {
     return !_.isEmpty(value);
   }
-  // This will be called when the user clicks on the login button
-  login(e) {
-    e.preventDefault();
-    console.log("Login Called!");
-    // Here, we call an external AuthService. We’ll create it in the next step
-    //Auth.login(this.state.user, this.state.password)
-    //.catch(function(err) {
-      //console.log('Error logging in', err);
-      //});
-  }
-
 
   render() {
     return (
-
     <div className="session-container">
       <div className="session">
         {/* Login Form */}
         <div className="ui-form">
           <h3 className="text-center">Sign In</h3>
-          <form  onSubmit={this.saveAndContinue}>
+          <form  onSubmit={this.login}>
             {/* Email */}
             <div className="form-group">
               <Input 

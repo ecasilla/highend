@@ -17,9 +17,9 @@ $stack-pt-serif   : 'PT Serif', serif;
 
 $base-font-family: $stack-roboto;
 $heading-font-family: $base-font-family;
-$heading-font-weight:    500 !default;
-$heading-line-height:    1.1 !default;
-$heading-color:          inherit !default;
+$heading-font-weight: 500 !default;
+$heading-line-height: 1.1 !default;
+$heading-color:       inherit !default;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -57,38 +57,25 @@ $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($primary-color, $lightness: -5%, $alpha: -0.3);
 
 // Extra small screen / phone
-//** Deprecated `$screen-xs` as of v3.0.1
+
+
 $screen-xs:                  480px !default;
-//** Deprecated `$screen-xs-min` as of v3.2.0
-$screen-xs-min:              $screen-xs !default;
-//** Deprecated `$screen-phone` as of v3.0.1
-$screen-phone:               $screen-xs-min !default;
-
 // Small screen / tablet
-//** Deprecated `$screen-sm` as of v3.0.1
 $screen-sm:                  768px !default;
-$screen-sm-min:              $screen-sm !default;
-//** Deprecated `$screen-tablet` as of v3.0.1
-$screen-tablet:              $screen-sm-min !default;
-
 // Medium screen / desktop
-//** Deprecated `$screen-md` as of v3.0.1
 $screen-md:                  992px !default;
-$screen-md-min:              $screen-md !default;
-//** Deprecated `$screen-desktop` as of v3.0.1
-$screen-desktop:             $screen-md-min !default;
-
 // Large screen / wide desktop
-//** Deprecated `$screen-lg` as of v3.0.1
 $screen-lg:                  1200px !default;
-$screen-lg-min:              $screen-lg !default;
-//** Deprecated `$screen-lg-desktop` as of v3.0.1
-$screen-lg-desktop:          $screen-lg-min !default;
+
+$mobile: new-breakpoint(max-width $screen-xs);
+$tablet: new-breakpoint(max-width $screen-sm min-width $screen-xs);
+$desktop: new-breakpoint(min-width $screen-md);
+$lg-desktop: new-breakpoint(min-width $screen-lg);
 
 // So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm-min - 1) !default;
-$screen-sm-max:              ($screen-md-min - 1) !default;
-$screen-md-max:              ($screen-lg-min - 1) !default;
+$screen-xs-max:              ($screen-sm - 1) !default;
+$screen-sm-max:              ($screen-md - 1) !default;
+$screen-md-max:              ($screen-lg - 1) !default;
 
 //** Horizontal offset for forms and lists.
 $component-offset-horizontal: 180px !default;
