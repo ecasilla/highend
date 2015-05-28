@@ -141,7 +141,7 @@ export default class Login extends BaseComponent {
             <button type="submit" className="button" onClick={this.login} label="Login">Login</button>
             <button className="button" label="Sign Up" onClick={this.signup} >Sign In</button>
           </form>
-          <SocialSessions/>
+          <SocialSessions SessionType="Login"/>
         </div>
       </div>
     </div>
@@ -149,9 +149,9 @@ export default class Login extends BaseComponent {
   }
 }
 
- Login.contextTypes = {
-    router: React.PropTypes.func
-  }
+Login.contextTypes = {
+  router: React.PropTypes.func
+}
 // We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
 ReactMixin(Login.prototype, React.addons.LinkedStateMixin);
 

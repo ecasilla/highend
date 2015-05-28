@@ -4,7 +4,7 @@ import {RouteHandler} from 'react-router';
 import FastClick from 'fastclick';
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
-require('./assets/styles/sass/app.scss')
+require('./assets/styles/sass/app.scss');
 
 export default class App extends React.Component {
   constructor (props) {

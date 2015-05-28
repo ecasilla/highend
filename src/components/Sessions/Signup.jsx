@@ -1,7 +1,7 @@
 import React from 'react/addons';
 import BaseComponent from '../BaseComponent';
 import ReactMixin from 'react-mixin';
-import {RaisedButton,Checkbox} from 'material-ui';
+import {Checkbox} from 'material-ui';
 import SocialSessions from '../Shared/SocialSessions';
 import _ from 'lodash';
 import Input from '../Shared/Input';
@@ -22,6 +22,8 @@ export default class Signup extends BaseComponent {
     this.state = {
       email: null,
       password: null,
+      companyName:null,
+      fullName:null,
       confirmPassword: null,
       forbiddenWords: ["password", "user", "username"]
     };
@@ -45,9 +47,14 @@ export default class Signup extends BaseComponent {
   handleCompanyInput(event) {
     this.setState({
       companyName: event.target.value
-    })
+    });
   }
 
+  handleNameInput(event) {
+    this.setState({
+      companyName: event.target.value
+    });
+  }
   handleConfirmPasswordInput (event) {
     this.setState({
       confirmPassword: event.target.value
@@ -76,6 +83,11 @@ export default class Signup extends BaseComponent {
     }
   }
 
+  login(event) {
+    event.preventDefault();
+    this.context.router.transitionTo('/login');
+  }
+
   isConfirmedPassword (event) {
     return (event == this.state.password);
   }
@@ -102,7 +114,7 @@ export default class Signup extends BaseComponent {
       <div className="session">
         {/* Login Form */}
         <div className="ui-form">
-          <h3 className="text-center">Sign Up</h3>
+          <h4 className="text-center">Sign Up</h4>
           <form  onSubmit={this.signup}>
             {/* Email */}
             <div className="form-group">
@@ -125,6 +137,14 @@ export default class Signup extends BaseComponent {
               value={this.state.companyName}
               onChange={this.handleCompanyInput} 
               emptyMessage="Company name can't be empty"
+            /> 
+            <Input 
+              text="Full Name" 
+              ref="fullName"
+              validate={this.isEmpty}
+              value={this.state.fullName}
+              onChange={this.handleNameInput} 
+              emptyMessage="Full name can't be empty"
             /> 
             {/* Password */}
             <div className="form-group">
@@ -158,10 +178,10 @@ export default class Signup extends BaseComponent {
             <div className="checkbox">
               <label> <Checkbox name="Remember Me" label="Remember Me"/> </label>
             </div>
-            <RaisedButton type="submit" className="button" label="Sign Up" onClick={this.signup}/>
-            <RaisedButton className="button" label="Login" />
+            <button className="button" onClick={this.login} label="Login">Login</button>
+            <button type="submit" className="button" label="Sign Up" onClick={this.signup} >Sign In</button>
           </form>
-          <SocialSessions/>
+          <SocialSessions SessionType="Signup"/>
         </div>
       </div>
     </div>
@@ -169,6 +189,9 @@ export default class Signup extends BaseComponent {
   }
 }
 
+Signup.contextTypes = {
+  router: React.PropTypes.func
+}
 
 // We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
 ReactMixin(Signup.prototype, React.addons.LinkedStateMixin);
