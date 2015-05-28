@@ -11,5 +11,8 @@ export default {
     //Session
     LOGIN_REQUEST: null,
     LOGIN_RESPONSE: null
-  })
+  }),
+  Api:{
+    BASE_URL:"https://flickering-inferno-6672.firebaseio.com/";
+  }
 };

@@ -26,6 +26,13 @@ export default class Signup extends BaseComponent {
       forbiddenWords: ["password", "user", "username"]
     };
   }
+  componentWillMount(){
+      window.document.body.classList.add('session-background');
+  }
+  componentWillUnmount(){
+      window.document.body.classList.remove('session-background');
+  }
+
   handlePasswordInput (event) {
     if(!_.isEmpty(this.state.confirmPassword)){
       this.refs.passwordConfirm.isValid();
