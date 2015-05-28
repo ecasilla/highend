@@ -12,5 +12,6 @@
 @import "layouts/layouts";
 
 #app{
+   @include outer-container(100%);
    @include size(100%);
 }
