@@ -56,20 +56,6 @@ $base-border: 1px solid $base-border-color;
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($primary-color, $lightness: -5%, $alpha: -0.3);
 
-// Extra small screen / phone
-$screen-xs:                  480px !default;
-// Small screen / tablet
-$screen-sm:                  768px !default;
-// Medium screen / desktop
-$screen-md:                  992px !default;
-// Large screen / wide desktop
-$screen-lg:                  1200px !default;
-
-$mobile: new-breakpoint(max-width $screen-xs 4);
-$tablet: new-breakpoint(max-width $screen-sm min-width $screen-xs 8);
-$desktop: new-breakpoint(min-width $screen-md 12);
-$lg-desktop: new-breakpoint(min-width $screen-lg 12);
-
 // So media queries don't overlap when required, provide a maximum
 $screen-xs-max:              ($screen-sm - 1) !default;
 $screen-sm-max:              ($screen-md - 1) !default;

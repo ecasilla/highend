@@ -11,6 +11,20 @@ $medium-screen: em(640);
 $large-screen: em(860);
 
 $visual-grid : true;
-$landscape: new-breakpoint(min-width 480px 4);
-$tablet: new-breakpoint(min-width 760px 8);
-$desktop: new-breakpoint(min-width 960px 12);
+// Extra small screen / phone
+$screen-xs:                  480px !default;
+// Small screen / tablet
+$screen-sm:                  768px !default;
+// Medium screen / desktop
+$screen-md:                  992px !default;
+// Large screen / wide desktop
+$screen-lg:                  1200px !default;
+
+$screen-xlg:                  1600px !default;
+
+
+$mobile: new-breakpoint(max-width $screen-xs 4);
+$tablet: new-breakpoint(max-width $screen-sm min-width $screen-xs 8);
+$desktop: new-breakpoint(min-width $screen-md max-width $screen-lg 12);
+$lg-desktop: new-breakpoint(min-width $screen-lg max-width $screen-lg 12);
+$xlg-desktop: new-breakpoint(min-width $screen-lg 12);

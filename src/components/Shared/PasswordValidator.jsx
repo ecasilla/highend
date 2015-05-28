@@ -33,17 +33,16 @@ export default class PasswordValidator extends React.Component {
 
 
     if(this.props.valid) {
-      validatorTitle = <h4 className="validator_title valid">{this.props.name} IS OK</h4>
+      validatorTitle = `Valid ${this.props.name }`
     } else {
-      validatorTitle = <h4 className="validator_title invalid">{this.props.name} RULES</h4>
-
+      validatorTitle = `${this.props.name} Rules!`; 
     }
 
     return (
       <div className={validatorClass}>
       <div className="validator_container">
 
-      {validatorTitle}
+     <span className="validator_title valid">{validatorTitle} </span>
 
       <ul className="rules_list">
 

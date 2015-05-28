@@ -1,7 +1,7 @@
 import React from 'react/addons';
 import BaseComponent from '../BaseComponent';
 import ReactMixin from 'react-mixin';
-import {RaisedButton,Checkbox} from 'material-ui';
+import {Checkbox} from 'material-ui';
 import SocialSessions from '../Shared/SocialSessions';
 import _ from 'lodash';
 import Input from '../Shared/Input';
@@ -16,7 +16,8 @@ export default class Login extends BaseComponent {
     'handleEmailInput',
     'isConfirmedPassword',
     'validateEmail',
-    'login'
+    'login',
+    'signup'
     );
     this.state = {
       email: null,
@@ -67,6 +68,12 @@ export default class Login extends BaseComponent {
     return (event == this.state.password);
   }
 
+  signup(event) {
+    event.preventDefault();
+    console.log(this.context);
+    this.context.router.transitionTo('/signup');
+  }
+
   handleEmailInput(event){
     this.setState({
       email: event.target.value
@@ -89,8 +96,8 @@ export default class Login extends BaseComponent {
       <div className="session">
         {/* Login Form */}
         <div className="ui-form">
-          <h3 className="text-center">Sign In</h3>
-          <form  onSubmit={this.login}>
+          <h4 className="text-center">Login</h4>
+          <form onSubmit={this.login}>
             {/* Email */}
             <div className="form-group">
               <Input 
@@ -121,24 +128,12 @@ export default class Login extends BaseComponent {
               onChange={this.handlePasswordInput}
               />
             </div>
-            <div className="form-group">
-              <Input 
-              text="Confirm password" 
-              ref="passwordConfirm"
-              type="password"
-              validate={this.isConfirmedPassword}
-              value={this.state.confirmPassword}
-              onChange={this.handleConfirmPasswordInput} 
-              emptyMessage="Please confirm your password"
-              errorMessage="Passwords don't match"
-              /> 
-            </div>
 
             <div className="checkbox">
-              <label> <Checkbox name="Remember Me" label="Remember Me"/> </label>
+              <label><Checkbox name="Remember Me" label="Remember Me"/></label>
             </div>
-            <RaisedButton type="submit" className="button" label="Login" />
-            <RaisedButton className="button" label="Sign Up"  onClick={this.login}/>
+            <button type="submit" className="button" onClick={this.login} label="Login">Login</button>
+            <button className="button" label="Sign Up" onClick={this.signup} >Sign In</button>
           </form>
           <SocialSessions/>
         </div>
@@ -148,7 +143,9 @@ export default class Login extends BaseComponent {
   }
 }
 
-
+ Login.contextTypes = {
+    router: React.PropTypes.func
+  }
 // We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
 ReactMixin(Login.prototype, React.addons.LinkedStateMixin);
 
