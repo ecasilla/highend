@@ -13,11 +13,27 @@ class AuthService {
       email    : "bobtony@firebase.com",
       password : "correcthorsebatterystaple"
     }, (error, authData) => {
-
+      switch (error.code) {
+        case "INVALID_EMAIL":
+          console.log("The specified user account email is invalid.");
+          break;
+        case "INVALID_PASSWORD":
+          console.log("The specified user account password is incorrect.");
+          break;
+        case "INVALID_USER":
+          console.log("The specified user account does not exist.");
+          break;
+        case "EMAIL_TAKEN"
+        console.log("Email has been taken");
+         break;
+        default:
+          console.log("Error logging user in:", error);
+      }
     });
   }
 
   logout() {
+    FireBaseService.unauth();
     LoginActions.logoutUser();
   }
 
