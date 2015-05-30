@@ -10,9 +10,9 @@ describe('Signup Page', () => {
          <Signup/>
     );
 
-    const label = TestUtils.findRenderedDOMComponentWithTag(signup, 'h3');
+    const label = TestUtils.findRenderedDOMComponentWithTag(signup, 'h4');
     const labelDOM = React.findDOMNode(label);
 
-    expect(labelDOM.textContent).to.equal("Sign In");
+    expect(labelDOM.textContent).to.equal("Sign Up");
   });
 });
