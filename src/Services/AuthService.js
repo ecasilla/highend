@@ -54,20 +54,19 @@ class AuthService {
     });
   }
 
-  thirdPartyLogin(provider) {
-    var deferred = Promise.deferred();
-    FireBaseService.authWithOAuthPopup(provider,(err, user) => {
-      if (err) {
-        deferred.reject(err);
-      }
-      if (user) {
-        deferred.resolve(user);
-      }
+  thirdPartyLogin(provider){
+    var promise;
+    return new Promise( (resolve,reject) =>{
+      promise = resolve;
+      FireBaseService.authWithOAuthPopup(provider,(err, user) => {
+        if (err) { reject(err); }
+        if (user) { resolve(user);}
+      });
+      return promise;
     });
-    return deferred.promise();
   }
 
-  handleAuth(loginPromise) {
+  handleAuth(loginPromise){
     return loginPromise
     .then(response => {
       var jwt = response.id_token;

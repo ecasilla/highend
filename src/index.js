@@ -14,14 +14,14 @@ var paceOptions = {
 };
 
 Pace.stop();
-function RouterInit(Handler){
+function RouterInit(Handler,state){
   if(window.hasOwnProperty('ga') && typeof window.ga === 'function') {
     window.ga('send', 'pageview', {
       'page': window.location.pathname + window.location.search  + window.location.hash
     });
   }
   Pace.restart();
-  React.render(<Handler/>, document.getElementById('app'));
+  React.render(<Handler {...state}/>, document.getElementById('app'));
 }
 
 Router.run(routes, RouterInit);
