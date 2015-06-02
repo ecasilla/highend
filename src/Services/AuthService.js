@@ -5,31 +5,41 @@ import FireBaseService from './FireBaseService';
 
 class AuthService {
   constructor(){
-    FireBaseService = FireBaseService.get_ref();
+    FireBaseService = FireBaseService.ref();
   }
 
-  login(username, password) {
-    FireBaseService.authWithPassword({
-      email    : "bobtony@firebase.com",
-      password : "correcthorsebatterystaple"
-    }, (error, authData) => {
-      switch (error.code) {
-        case "INVALID_EMAIL":
-          console.log("The specified user account email is invalid.");
-          break;
-        case "INVALID_PASSWORD":
-          console.log("The specified user account password is incorrect.");
-          break;
-        case "INVALID_USER":
-          console.log("The specified user account does not exist.");
-          break;
-        case "EMAIL_TAKEN"
+  errorcheck(error){
+    switch (error.code) {
+      case "INVALID_EMAIL":
+        console.log("The specified user account email is invalid.");
+        break;
+      case "INVALID_PASSWORD":
+        console.log("The specified user account password is incorrect.");
+        break;
+      case "INVALID_USER":
+        console.log("The specified user account does not exist.");
+        break;
+      case "EMAIL_TAKEN":
         console.log("Email has been taken");
-         break;
-        default:
-          console.log("Error logging user in:", error);
+       break;
+      default:
+        console.log("Error logging user in:", error);
+    }
+  }
+
+  login(user) {
+    return new Promise( (resolve,reject) => {
+    FireBaseService.authWithPassword({
+      email    : user.email,
+      password : user.password
+    }, (error, authData) => {
+      if (error) {
+        errorcheck(error);
+      }else{
+        return authData;
       }
     });
+  });
   }
 
   logout() {
@@ -38,31 +48,31 @@ class AuthService {
   }
 
   signup(payload) {
+    return new Promise( (resolve,reject) => {
     FireBaseService.createUser(payload,(error, userData) => {
       if (error) {
-        console.log("Error creating user:", error);
+        errorcheck(error);
       } else {
         console.log("Successfully created user account with uid:", userData.uid);
+        return userData;
       }
     });
+  });
   }
 
   createUserAndLogin(userObj) {
-    return createUser(userObj)
-    .then(=> {
-      return authWithPassword(userObj);
+    return signup(userObj)
+      .then(() => {
+        return login(userObj);
     });
   }
 
   thirdPartyLogin(provider){
-    var promise;
-    return new Promise( (resolve,reject) =>{
-      promise = resolve;
+    return new Promise( (resolve,reject) => {
       FireBaseService.authWithOAuthPopup(provider,(err, user) => {
         if (err) { reject(err); }
         if (user) { resolve(user);}
       });
-      return promise;
     });
   }
 

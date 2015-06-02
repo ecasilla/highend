@@ -32,7 +32,7 @@ let onSetMeta = (name, content) => {
   document.getElementsByTagName('head')[0].appendChild(meta);
 };
 
-App.contextTypes: {
+App.contextTypes = {
     onSetTitle: value => document.title = value,
     onSetMeta
   }
