@@ -1,10 +1,9 @@
 import Dispatcher from '../core/Dispatcher.js';
-import {LOGIN_USER, LOGOUT_USER} from '../constants/LoginConstants.js';
 import RouterContainer from '../services/RouterContainer'
 
 export default {
   loginUser: (jwt) => {
-    RouterContainer.get().transitionTo('/');
+    RouterContainer.get().transitionTo('/dashboard');
     localStorage.setItem('jwt', jwt);
     AppDispatcher.dispatch({
       actionType: LOGIN_USER,

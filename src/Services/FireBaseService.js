@@ -8,10 +8,10 @@ export default class FireBaseService {
     this._ref = new Firebase(API.BASE_URL);
     this._geo = new GeoFire(this._ref);
   }
-  get ref(){
+  ref(){
     return this._ref;
   }
-  get geo(){
+  geo(){
     return this._geo;
   }
 }

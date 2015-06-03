@@ -5,73 +5,60 @@ import {Checkbox} from 'material-ui';
 import SocialSessions from '../Shared/SocialSessions';
 import _ from 'lodash';
 import Input from '../Shared/Input';
+import Auth from '../../services/AuthService';
 
 export default class Login extends BaseComponent {
 
   constructor(props) {
     super(props);
     this._bind(
-    'handlePasswordInput',
-    'handleConfirmPasswordInput',
-    'handleEmailInput',
-    'isConfirmedPassword',
-    'validateEmail',
-    'login',
-    'signup'
+      'handlePasswordInput',
+      'handleEmailInput',
+      'validateEmail',
+      'login',
+      'signup'
     );
     this.state = {
       email: null,
       password: null,
-      confirmPassword: null,
       forbiddenWords: ["password", "user", "username"]
     };
   }
   componentWillMount(){
-      window.document.body.classList.add('session-background');
+    window.document.body.classList.add('session-background');
   }
   componentWillUnmount(){
-      window.document.body.classList.remove('session-background');
+    window.document.body.classList.remove('session-background');
   }
   handlePasswordInput (event) {
-    if(!_.isEmpty(this.state.confirmPassword)){
-      this.refs.passwordConfirm.isValid();
+    if(!_.isEmpty(this.state.password)){
+      this.refs.password.isValid();
     }
-    this.refs.passwordConfirm.hideError();
     this.setState({
       password: event.target.value
     });
   }
 
-  handleConfirmPasswordInput (event) {
-    this.setState({
-      confirmPassword: event.target.value
-    });
-  }
-
   login (e) {
     e.preventDefault();
+    console.log(this.refs);
 
-    var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid() && this.refs.passwordConfirm.isValid();
+    var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid(); 
 
     if(canProceed) {
       var data = {
         email: this.state.email
       };
-     console.log("LOGGED IN " + this.state.email);
-    // Here, we call an external AuthService. We’ll create it in the next step
-    //Auth.login(this.state.email, this.state.password)
-    //.catch(function(err) {
-    //console.log('Error logging in', err);
-    //});
+      console.log("LOGGED IN " + this.state.email);
+      // Here, we call an external AuthService. We’ll create it in the next step
+      Auth.login(this.state.email, this.state.password)
+      .catch(function(err) {
+        console.log('Error logging in', err);
+      });
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
-      this.refs.passwordConfirm.isValid();
     }
-  }
-
-  isConfirmedPassword (event) {
-    return (event == this.state.password);
   }
 
   signup(event) {
@@ -98,53 +85,54 @@ export default class Login extends BaseComponent {
 
   render() {
     return (
-    <div className="session-container">
+      <div className="session-container">
       <div className="session">
-        {/* Login Form */}
-        <div className="ui-form">
-          <h4 className="text-center">Login</h4>
-          <form onSubmit={this.login}>
-            {/* Email */}
-            <div className="form-group">
-              <Input 
-              text="Email" 
-              type="email"
-              defaultValue={this.state.email} 
-              validate={this.validateEmail}
-              value={this.state.email}
-              onChange={this.handleEmailInput} 
-              errorMessage="Email is invalid"
-              emptyMessage="Email can't be empty"
-              errorVisible={this.state.showEmailError}
-              />
-            </div>
-            {/* Password */}
-            <div className="form-group">
-              <Input 
-              text="Password"
-              type="password"
-              ref="password"
-              validator="true"
-              minCharacters="8"
-              requireCapitals="1"
-              requireNumbers="1"
-              forbiddenWords={this.state.forbiddenWords}
-              value={this.state.passsword}
-              emptyMessage="Password is invalid"
-              onChange={this.handlePasswordInput}
-              />
-            </div>
-
-            <div className="checkbox">
-              <label><Checkbox name="Remember Me" label="Remember Me"/></label>
-            </div>
-            <button type="submit" className="button" onClick={this.login} label="Login">Login</button>
-            <button className="button" label="Sign Up" onClick={this.signup} >Sign In</button>
-          </form>
-          <SocialSessions SessionType="Login"/>
-        </div>
+      {/* Login Form */}
+      <div className="ui-form">
+      <h4 className="text-center">Login</h4>
+      <form onSubmit={this.login}>
+      {/* Email */}
+      <div className="form-group">
+      <Input 
+      text="Email" 
+      type="email"
+      ref="email"
+      defaultValue={this.state.email} 
+      validate={this.validateEmail}
+      value={this.state.email}
+      onChange={this.handleEmailInput} 
+      errorMessage="Email is invalid"
+      emptyMessage="Email can't be empty"
+      errorVisible={this.state.showEmailError}
+      />
       </div>
-    </div>
+      {/* Password */}
+      <div className="form-group">
+      <Input 
+      text="Password"
+      type="password"
+      ref="password"
+      validator="true"
+      minCharacters="8"
+      requireCapitals="1"
+      requireNumbers="1"
+      forbiddenWords={this.state.forbiddenWords}
+      value={this.state.passsword}
+      emptyMessage="Password is invalid"
+      onChange={this.handlePasswordInput}
+      />
+      </div>
+
+      <div className="checkbox">
+      <label><Checkbox name="Remember Me" label="Remember Me"/></label>
+      </div>
+      <button type="submit" className="button" onClick={this.login} label="Login">Login</button>
+      <button className="button" label="Sign Up" onClick={this.signup} >Sign In</button>
+      </form>
+      <SocialSessions SessionType="Login"/>
+      </div>
+      </div>
+      </div>
     );
   }
 }

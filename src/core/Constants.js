@@ -1,18 +1,18 @@
-import KeyMirror from 'react/lib/keyMirror';
+import keymirror from 'react/lib/keyMirror';
 
 export default {
 
-  PayloadSources:KeyMirror({
+  PayloadSources: keymirror({
     SERVER_ACTION: null,
     VIEW_ACTION: null
   }),
-  ActionTypes: KeyMirror({
+  ActionTypes: keymirror({
     CHANGE_EVENT:null,
     //Session
     LOGIN_REQUEST: null,
     LOGIN_RESPONSE: null
   }),
   Api:{
-    BASE_URL:"https://flickering-inferno-6672.firebaseio.com/";
+    BASE_URL:"https://flickering-inferno-6672.firebaseio.com/"
   }
 };

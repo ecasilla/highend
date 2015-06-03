@@ -1,11 +1,10 @@
-import {LOGIN_URL, SIGNUP_URL} from '../constants/LoginConstants';
 import LoginActions from '../actions/LoginActions';
 import Firebase from 'firebase';
 import FireBaseService from './FireBaseService';
 
 class AuthService {
   constructor(){
-    FireBaseService = FireBaseService.ref();
+    FireBaseService.get_ref();
   }
 
   errorcheck(error){
@@ -21,7 +20,7 @@ class AuthService {
         break;
       case "EMAIL_TAKEN":
         console.log("Email has been taken");
-       break;
+        break;
       default:
         console.log("Error logging user in:", error);
     }
@@ -29,17 +28,17 @@ class AuthService {
 
   login(user) {
     return new Promise( (resolve,reject) => {
-    FireBaseService.authWithPassword({
-      email    : user.email,
-      password : user.password
-    }, (error, authData) => {
-      if (error) {
-        errorcheck(error);
-      }else{
-        return authData;
-      }
+      FireBaseService.authWithPassword({
+        email    : user.email,
+        password : user.password
+      }, (error, authData) => {
+        if (error) {
+          errorcheck(error);
+        }else{
+          return authData;
+        }
+      });
     });
-  });
   }
 
   logout() {
@@ -49,21 +48,21 @@ class AuthService {
 
   signup(payload) {
     return new Promise( (resolve,reject) => {
-    FireBaseService.createUser(payload,(error, userData) => {
-      if (error) {
-        errorcheck(error);
-      } else {
-        console.log("Successfully created user account with uid:", userData.uid);
-        return userData;
-      }
+      FireBaseService.createUser(payload,(error, userData) => {
+        if (error) {
+          errorcheck(error);
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+          return userData;
+        }
+      });
     });
-  });
   }
 
   createUserAndLogin(userObj) {
     return signup(userObj)
-      .then(() => {
-        return login(userObj);
+    .then(() => {
+      return login(userObj);
     });
   }
 
