@@ -1,5 +1,5 @@
 import { Dispatcher } from 'flux';
-import {PayloadSources}  from './constants';
+import {PayloadSources}  from './Constants';
 import assign from 'object-assign';
 
 let AppDispatcher = assign(new Dispatcher(),{
@@ -23,4 +23,4 @@ let AppDispatcher = assign(new Dispatcher(),{
 });
 
 
-export default AppDispatcher();
+export default AppDispatcher;

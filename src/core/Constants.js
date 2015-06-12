@@ -1,12 +1,12 @@
-import keymirror from 'react/lib/keyMirror';
+import keyMirror from 'react/lib/keyMirror';
 
 export default {
 
-  PayloadSources: keymirror({
+  PayloadSources: keyMirror({
     SERVER_ACTION: null,
     VIEW_ACTION: null
   }),
-  ActionTypes: keymirror({
+  ActionTypes: keyMirror({
     CHANGE_EVENT:null,
     //Session
     LOGIN_REQUEST: null,
