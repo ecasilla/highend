@@ -47,11 +47,12 @@ export default class Login extends BaseComponent {
 
     if(canProceed) {
       var data = {
-        email: this.state.email
+        email: this.state.email,
+        password: this.state.password
       };
       console.log("LOGGED IN " + this.state.email);
       // Here, we call an external AuthService. We’ll create it in the next step
-      Auth.login(this.state.email, this.state.password)
+      Auth.login(data)
       .catch(function(err) {
         console.log('Error logging in', err);
       });

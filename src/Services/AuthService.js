@@ -1,10 +1,10 @@
 import LoginActions from '../actions/LoginActions';
 import Firebase from 'firebase';
-import FireBaseService from './FireBaseService';
+import FBService from './FireBaseService';
 
 class AuthService {
   constructor(){
-    FireBaseService.get_ref();
+   this.FireBaseService = new FBService().ref();
   }
 
   errorcheck(error){
@@ -27,13 +27,14 @@ class AuthService {
   }
 
   login(user) {
+    console.log(user,"login called");
     return new Promise( (resolve,reject) => {
-      FireBaseService.authWithPassword({
+      this.FireBaseService.authWithPassword({
         email    : user.email,
         password : user.password
       }, (error, authData) => {
         if (error) {
-          errorcheck(error);
+          this.errorcheck(error);
         }else{
           return authData;
         }

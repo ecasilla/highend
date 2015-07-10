@@ -12,7 +12,7 @@ export default {
     LOGIN_REQUEST: null,
     LOGIN_RESPONSE: null
   }),
-  Api:{
+  API:{
     BASE_URL:"https://flickering-inferno-6672.firebaseio.com/"
   }
 };
