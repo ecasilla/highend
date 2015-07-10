@@ -1,5 +1,5 @@
 import Dispatcher from '../core/Dispatcher';
-import ActionTypes from '../constants/ActionTypes';
+import {ActionTypes} from '../core/Constants';
 
 export default {
 

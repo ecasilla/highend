@@ -1,0 +1,196 @@
+.input_group {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 70px;
+  margin-bottom: 10px;
+  label.input_label {
+    @include display(flex);
+    @include align-items(center);
+    @include position(absolute,0 null null 0);
+    @include size(100%);
+    @include padding(0 0 0 15px);
+    @include user-select(none);
+    z-index: 10;
+    cursor: text;
+    .label_text {
+      font-size: 18px;
+      font-weight: 100;
+      letter-spacing: .7px;
+    }
+  }
+  &.input_empty.input_unfocused {
+    color: #c1c5cc;
+  }
+  &.input_focused label.input_label, &.input_hasValue label.input_label {
+    height: 46px;
+  }
+  &.input_focused label.input_label .label_text, &.input_hasValue label.input_label .label_text {
+    color: #b8bdc4;
+    letter-spacing: .7px;
+    font-size: 11px;
+  }
+  &.input_unfocused.input_hasValue.input_valid label.input_label {
+    color: #b1b0b1;
+  }
+  input.input {
+    display: block;
+    position: relative;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    @include transition(all 0.7s ease-in-out);
+    z-index: 1;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    @include padding(18px 15px 0 15px);
+    @include margin(0 auto 13px auto);
+    color: #363b4a;
+    letter-spacing: .7px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: $base-font-size;
+    height: 70px;
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+      color: #cacaca;
+    }
+  }
+  i {
+    @include position(absolute,0 15px null null);
+    @include display(flex);
+    @include align-items(center);
+    @include flex-direction(row);
+    @include size(20px 70px);
+    z-index: 1000;
+    z-index: 100;
+    svg {
+      opacity: 0;
+      @include transition(all 0.2 ease-in-out);
+      @include size(20px 20px);
+    }
+    &.input_error_icon {
+      z-index: 10;
+      path {
+        fill: #f16767;
+      }
+    }
+    &.input_valid_icon {
+      z-index: 1;
+      path {
+        fill: #50b87f;
+      }
+    }
+  }
+  &.input_error i.input_error_icon svg {
+    opacity: 1;
+  }
+  &.input_valid {
+    i {
+      &.input_error_icon {
+        z-index: 1;
+      }
+      &.input_valid_icon {
+        z-index: 10;
+      }
+    }
+    &.input_hasValue i.input_valid_icon svg {
+      opacity: 1;
+    }
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .input_group {
+    min-height: 64px;
+    margin-bottom: 0;
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .input_group label.input_label .label_text {
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .input_group label.input_label {
+    height: 64px;
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .input_group {
+    &.input_focused label.input_label, &.input_hasValue label.input_label {
+      height: 40px;
+    }
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .input_group input.input {
+    font-size: $base-font-size;
+    @include padding(15px 15px 0 15px);
+    height: 64px;
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .input_group i {
+    height: 64px;
+  }
+}
+
+.error_container {
+  @include position(absolute,0 null null 100%);
+  opacity: 0;
+  white-space: nowrap;
+  line-height: 70px;
+  background: #f16767;
+  @include size(auto 70px);
+  @include padding(0 20px 0 20px);
+  color: $white;
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: .6px;
+  @include user-select(none);
+  @include transition(all 0.2s ease-in-out);
+  &.visible {
+    @include transform(translateX(0px));
+    opacity: 1;
+  }
+  &.invisible {
+    @include transform(translateX(-30px));
+    opacity: 0;
+    -webkit-animation-delay: 2s;
+    /* Chrome, Safari, Opera */
+    animation-delay: 2s;
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+.error_container {
+    @include position(relative,-13px null null 0);
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: 300;
+    @include padding(0 15px 0 15px);
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .error_container.visible {
+    height: 30px;
+  }
+}
+
+@include media(min-width 0px max-width 870px, 6) {
+  .error_container.invisible {
+    height: 0;
+    line-height: 0;
+    @include transform(translateX(0px));
+  }
+}

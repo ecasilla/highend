@@ -7,15 +7,21 @@ require('./assets/styles/pace/pace.css');
 
 RouterContainer.set(Router);
 RouterContainer.set(Router.create({ routes }));
+var paceOptions = {
+  ajax: true, 
+  document: true,
+  eventLag: true
+};
 
-function RouterInit(Handler){
+Pace.stop();
+function RouterInit(Handler,state){
   if(window.hasOwnProperty('ga') && typeof window.ga === 'function') {
     window.ga('send', 'pageview', {
       'page': window.location.pathname + window.location.search  + window.location.hash
     });
   }
   Pace.restart();
-  React.render(<Handler/>, document.getElementById('app'));
+  React.render(<Handler {...state}/>, document.getElementById('app'));
 }
 
 Router.run(routes, RouterInit);

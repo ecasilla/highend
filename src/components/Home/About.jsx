@@ -11,6 +11,7 @@ export default class About extends React.Component {
     return (
       <div>
         <Header/>
+        <h1>About?</h1>
         <FlatButton label="About" />
       </div>
     );

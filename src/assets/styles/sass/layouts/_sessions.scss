@@ -1,15 +1,52 @@
-.session-container{
-  @include size(100%);
+.session-background{
   background: url("../../images/login/background.jpg");
   background-attachment: fixed;
   background-size: cover;
+}
+.session-container{
+  @include outer-container(100%);
+  @include size(100% 100%);
+  overflow:hidden;
   .session {
-    @include padding(10% null);
-    @include span-columns(12);
+    @include media($xlg-desktop){
+      @include padding(10% null);
+      @include span-columns(4);
+      @include shift(4);
+    }
+    @include media($lg-desktop){
+      @include padding(6% null);
+      @include span-columns(4);
+      @include shift(4);
+    }
+    @include media($desktop){
+      @include padding(6% null);
+      @include span-columns(6);
+      @include shift(3);
+    }
+    @include media($tablet-desktop){
+      @include padding(7% null);
+      @include span-columns(4);
+      @include shift(2);
+    }
+    @include media( $tablet ) {
+      @include padding(7% null);
+      @include span-columns(6);
+      @include shift(1);
+      
+    }
+    @include media( $mobile ) {
+      @include padding(7% null);
+      overflow:scroll;
+      @include span-columns(3);
+    }
+    @include media( $mobile-sm ) {
+      overflow:scroll;
+      @include span-columns(3);
+      @include omega;
+    }
+
     .ui-form {
       @include padding(60px 35px null);
-      max-width: 35%;
-      margin: 0 auto;
       background: rgba(255, 255, 255, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 5px;
@@ -18,35 +55,45 @@
         font-size: $font-size-h4;
         line-height: $base-line-height;
         @include margin(15px 0px 25px 0px);
-        text-transform: uppercase;
         color: $white;
       }
       form {
+        @include row();
         margin-bottom: 15px;
         color: #fff;
-        .mui-text-field {
-          width:100%;
-          box-shadow: none !important;
-          padding: 6px 5px;
-          color: $accent-color;
-          border: 0px;
-          background: transparent;
-          border-radius: 0px;
-        }
         ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
           color: rgba(255, 255, 255, 0.5);
         }
         .button {
-          @include margin(30px 30px);
+          @include media($lg-desktop){
+            @include span-columns(8);
+            @include shift(2);
+          }
+          @include media($desktop){
+            @include span-columns(8);
+            @include shift(2);
+          }
+          @include media( $tablet ) {
+            @include span-columns(6);
+            @include shift(1);
+          }
+          @include media( $mobile ) {
+            @include span-columns(3);
+          }
+          @include span-columns(4);
+          @include shift(1);
+          @include margin(15px null 15px null);
+          @include omega;
           border: 1px solid rgba(255, 255, 255, 0.5);
           text-transform: uppercase;
           font-weight: 600;
+          border-radius: 25px;
           background: transparent;
-          margin-top: 15px;
-          color: $primary-color;
+          color: $white;
           @include transition(all,0.5s, ease);
           &:hover {
-            background: $accent-color;
+            color: #666;
+            background: #fff;
           }
         }
       }
