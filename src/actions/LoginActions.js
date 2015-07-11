@@ -1,18 +1,26 @@
 import Dispatcher from '../core/Dispatcher.js';
-import RouterContainer from '../services/RouterContainer'
+import RouterContainer from '../services/RouterContainer';
+import LocalStorage from '../services/LocalStorage';
 
 export default {
-  loginUser: (jwt) => {
+  loginUser (user) {
     RouterContainer.get().transitionTo('/dashboard');
-    localStorage.setItem('jwt', jwt);
+    LocalStorage.save('user', user);
     AppDispatcher.dispatch({
       actionType: LOGIN_USER,
-      jwt: jwt
+      user: user
     });
   },
-  logoutUser: () => {
+  signup(user){
+    RouterContainer.get().transitionTo('/dashboard');
+    AppDispatcher.dispatch({
+      actionType: SIGN_UP,
+      user: user
+    });
+  },
+  logoutUser () {
     RouterContainer.get().transitionTo('/login');
-    localStorage.removeItem('jwt');
+    LocalStorage.remove('user');
     AppDispatcher.dispatch({
       actionType: LOGOUT_USER
     });

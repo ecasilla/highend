@@ -27,16 +27,17 @@ class AuthService {
   }
 
   login(user) {
-    console.log(user,"login called");
     return new Promise( (resolve,reject) => {
       this.FireBaseService.authWithPassword({
         email    : user.email,
         password : user.password
       }, (error, authData) => {
-        if (error) {
+        if (error || !userData) {
           this.errorcheck(error);
         }else{
-          return authData;
+          console.log("Successfully logged in user account: ", authData);
+          LoginActions.loginUser(authData);
+          return true;
         }
       });
     });
@@ -49,41 +50,35 @@ class AuthService {
 
   signup(payload) {
     return new Promise( (resolve,reject) => {
-      FireBaseService.createUser(payload,(error, userData) => {
-        if (error) {
-          errorcheck(error);
+      this.FireBaseService.createUser(payload,(error, userData) => {
+        if (error || !userData) {
+          this.errorcheck(error);
         } else {
-          console.log("Successfully created user account with uid:", userData.uid);
-          return userData;
+          console.log("Successfully created user account: ", userData);
+          LoginActions.signup(userData);
+          return true;
         }
       });
     });
   }
 
   createUserAndLogin(userObj) {
-    return signup(userObj)
+    return this.signup(userObj)
     .then(() => {
-      return login(userObj);
+      return this.login(userObj);
     });
   }
 
   thirdPartyLogin(provider){
     return new Promise( (resolve,reject) => {
-      FireBaseService.authWithOAuthPopup(provider,(err, user) => {
+      this.FireBaseService.authWithOAuthPopup(provider,(err, user) => {
         if (err) { reject(err); }
-        if (user) { resolve(user);}
+        if (!err && user) {
+          LoginActions.login(user);
+          return true;
+        }
       });
     });
   }
-
-  handleAuth(loginPromise){
-    return loginPromise
-    .then(response => {
-      var jwt = response.id_token;
-      LoginActions.loginUser(jwt);
-      return true;
-    });
-  }
-}
 
 export default new AuthService();

@@ -1,10 +1,11 @@
 import React from 'react/addons';
-import BaseComponent from '../BaseComponent';
 import ReactMixin from 'react-mixin';
 import {Checkbox} from 'material-ui';
-import SocialSessions from '../Shared/SocialSessions';
 import _ from 'lodash';
+import BaseComponent from '../BaseComponent';
+import SocialSessions from '../Shared/SocialSessions';
 import Input from '../Shared/Input';
+import Auth from '../../services/AuthService';
 
 export default class Signup extends BaseComponent {
 
@@ -14,9 +15,11 @@ export default class Signup extends BaseComponent {
     'handlePasswordInput',
     'handleConfirmPasswordInput',
     'handleEmailInput',
+    'handleNameInput',
     'handleCompanyInput',
     'isConfirmedPassword',
     'validateEmail',
+    'login',
     'signup'
     );
     this.state = {
@@ -52,7 +55,7 @@ export default class Signup extends BaseComponent {
 
   handleNameInput(event) {
     this.setState({
-      companyName: event.target.value
+      fullName: event.target.value
     });
   }
   handleConfirmPasswordInput (event) {
@@ -67,15 +70,13 @@ export default class Signup extends BaseComponent {
     var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid() && this.refs.passwordConfirm.isValid();
 
     if(canProceed) {
-      var data = {
-        email: this.state.email
-      };
-     console.log("LOGGED IN " + this.state.email);
-    // Here, we call an external AuthService. We’ll create it in the next step
-    //Auth.login(this.state.email, this.state.password)
-    //.catch(function(err) {
-    //console.log('Error logging in', err);
-    //});
+    Auth.createUserAndLogin(_.omit(this.state,'forbiddenWords'))
+    .then(function(){
+      this.context.router.transitionTo('/dashboard');
+    })
+    .catch(function(err) {
+      console.log('Error logging in', err);
+    });
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
