@@ -1,5 +1,6 @@
 import LoginActions from '../actions/LoginActions';
 import Firebase from 'firebase';
+import debug from 'debug';
 import FBService from './FireBaseService';
 
 class AuthService {
@@ -10,19 +11,19 @@ class AuthService {
   errorcheck(error){
     switch (error.code) {
       case "INVALID_EMAIL":
-        console.log("The specified user account email is invalid.");
+        debug('dev')("The specified user account email is invalid.");
         break;
       case "INVALID_PASSWORD":
-        console.log("The specified user account password is incorrect.");
+        debug('dev')("The specified user account password is incorrect.");
         break;
       case "INVALID_USER":
-        console.log("The specified user account does not exist.");
+        debug('dev')("The specified user account does not exist.");
         break;
       case "EMAIL_TAKEN":
-        console.log("Email has been taken");
+        debug('dev')("Email has been taken");
         break;
       default:
-        console.log("Error logging user in:", error);
+        debug('dev')("Error logging user in:", error);
     }
   }
 
@@ -33,9 +34,10 @@ class AuthService {
         password : user.password
       }, (error, authData) => {
         if (error || !userData) {
+          debug('err')("Error login ", error);
           this.errorcheck(error);
         }else{
-          console.log("Successfully logged in user account: ", authData);
+          debug('dev')("Successfully logged in user account: ", authData);
           LoginActions.loginUser(authData);
           return true;
         }
@@ -52,9 +54,10 @@ class AuthService {
     return new Promise( (resolve,reject) => {
       this.FireBaseService.createUser(payload,(error, userData) => {
         if (error || !userData) {
+          debug('err')("Error signup ", error);
           this.errorcheck(error);
         } else {
-          console.log("Successfully created user account: ", userData);
+          debug('dev')("Successfully created user account: ", userData);
           LoginActions.signup(userData);
           return true;
         }
@@ -73,6 +76,7 @@ class AuthService {
     return new Promise( (resolve,reject) => {
       this.FireBaseService.authWithOAuthPopup(provider,(err, user) => {
         if (err) { reject(err); }
+        debug('err')("Error third party login ", err);
         if (!err && user) {
           LoginActions.login(user);
           return true;

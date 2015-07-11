@@ -2,6 +2,7 @@ import EventEmitter from 'eventemitter3';
 import Dispatcher from '../core/Dispatcher';
 import { ActionTypes } from '../core/Constants.js';
 import assign from 'object-assign';
+import debug from 'debug';
 
 var BaseStore = assign({}, EventEmitter.prototype, {
 

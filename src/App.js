@@ -2,6 +2,7 @@ import 'babel/polyfill';
 import React from 'react';
 import {RouteHandler} from 'react-router';
 import FastClick from 'fastclick';
+import debug from 'debug';
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 
 require('./assets/styles/sass/app.scss');
@@ -47,4 +48,4 @@ Promise.all([
       window.attachEvent('onload', resolve);
     }
   }).then(() => FastClick.attach(document.body))
-]).then(console.log('APP READY'));
+]).then(debug('dev')('APP READY'));
