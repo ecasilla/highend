@@ -71,18 +71,20 @@ export default class Signup extends BaseComponent {
 
   signup (e) {
     e.preventDefault();
-
+    var data;
     var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid() && this.refs.passwordConfirm.isValid();
 
     if(canProceed) {
-    debug('dev')('Signing Up user',this.state);
-    Auth.createUserAndLogin(_.omit(this.state,'forbiddenWords'))
-    .then(function(){
-      this.context.router.transitionTo('/dashboard');
-    })
-    .catch(function(err) {
-      console.log('Error logging in', err);
-    });
+      data = _.omit(this.state,'forbiddenWords');
+      debug('dev')('Signing Up user',data);
+
+      Auth.createUserAndLogin(data)
+      .then(function(){
+        this.context.router.transitionTo('/dashboard');
+      })
+      .catch(function(err) {
+        debug('dev')('Error logging in', err);
+      });
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
