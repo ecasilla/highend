@@ -7,21 +7,21 @@ class PageTitleStore extends BaseStore{
     super();
     debug('dev')('PageTitleStore init')
     this.subscribe(() => this._registerToActions.bind(this))
-    this.title = 'HighEndInstallations';
+    this.title = '';
   }
 
   get_title(){
    return this.title;
   }
 
-   _registerToActions(action) {
-    switch(action.actionType) {
-      case ActionTypes.PAGE_TITLE:
-        debug('dev')("Changing Doc title")
-        this.title = action.title;
+   _registerToActions(payload) {
+    switch(payload.action.actionType) {
+      case "PAGE_TITLE":
+        this.title = payload.action.title;
         this.emitChange();
         break;
       default:
+        debug('dev')("PageTitleStore default")
         break;
     };
   }

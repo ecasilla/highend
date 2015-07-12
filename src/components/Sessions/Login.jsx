@@ -2,6 +2,7 @@ import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 import {Checkbox} from 'material-ui';
 import _ from 'lodash';
+import debug from 'debug';
 import PageActions from '../../actions/PageTitleAction';
 import BaseComponent from '../BaseComponent';
 import SocialSessions from '../Shared/SocialSessions';
@@ -27,6 +28,8 @@ export default class Login extends BaseComponent {
   }
   componentWillMount(){
     window.document.body.classList.add('session-background');
+  }
+  componentDidMount(){
     PageActions.setTitle("Login");
   }
   componentWillUnmount(){

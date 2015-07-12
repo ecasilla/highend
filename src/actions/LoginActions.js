@@ -3,24 +3,24 @@ import RouterContainer from '../services/RouterContainer';
 import LocalStorage from '../services/LocalStorage';
 
 export default {
-  loginUser (user) {
+  login (user) {
     LocalStorage.save('user', user);
-    AppDispatcher.dispatch({
+    Dispatcher.handleServerAction({
       actionType: LOGIN_USER,
       user: user
     });
     RouterContainer.get().transitionTo('/dashboard');
   },
   signup(user){
-    AppDispatcher.dispatch({
+    Dispatcher.handleServerAction({
       actionType: SIGN_UP,
       user: user
     });
     RouterContainer.get().transitionTo('/dashboard');
   },
-  logoutUser () {
+  logout () {
     LocalStorage.remove('user');
-    AppDispatcher.dispatch({
+    Dispatcher.handleServerAction({
       actionType: LOGOUT_USER
     });
     RouterContainer.get().transitionTo('/login');

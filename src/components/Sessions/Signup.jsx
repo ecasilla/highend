@@ -2,6 +2,8 @@ import React from 'react/addons';
 import ReactMixin from 'react-mixin';
 import {Checkbox} from 'material-ui';
 import _ from 'lodash';
+import debug from 'debug';
+import PageActions from '../../actions/PageTitleAction';
 import BaseComponent from '../BaseComponent';
 import SocialSessions from '../Shared/SocialSessions';
 import Input from '../Shared/Input';
@@ -33,6 +35,9 @@ export default class Signup extends BaseComponent {
   }
   componentWillMount(){
       window.document.body.classList.add('session-background');
+  }
+  componentDidMount(){
+    PageActions.setTitle("Sign Up");
   }
   componentWillUnmount(){
       window.document.body.classList.remove('session-background');
@@ -70,6 +75,7 @@ export default class Signup extends BaseComponent {
     var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid() && this.refs.passwordConfirm.isValid();
 
     if(canProceed) {
+    debug('dev')('Signing Up user',this.state);
     Auth.createUserAndLogin(_.omit(this.state,'forbiddenWords'))
     .then(function(){
       this.context.router.transitionTo('/dashboard');

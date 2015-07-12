@@ -18,9 +18,11 @@ export default class App extends BaseComponent {
   }
 
   componentDidMount() {
+    debug('dev')("componentDidMount App")
    PageTitleStore.addChangeListener(this.onChange)
   }
   componentWillUnmount() {
+    debug('dev')("componentWillUnmount App")
     PageTitleStore.removeChangeListener(this.onChange);
   }
 

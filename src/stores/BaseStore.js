@@ -25,10 +25,12 @@ export default class BaseStore extends EventEmitter {
   }
 
   addChangeListener(cb) {
+    debug('dev')("Adding change listener",cb.toString());
     this.on(ActionTypes.CHANGE, cb)
   }
 
   removeChangeListener(cb) {
+    debug('dev')("Removing change listener",cb.toString());
     this.removeListener(ActionTypes.CHANGE, cb);
   }
 

@@ -78,6 +78,7 @@ class AuthService {
         if (err) { reject(err); }
         debug('err')("Error third party login ", err);
         if (!err && user) {
+          debug('dev')('Logged in with: ' + provider,user);
           LoginActions.login(user);
           return true;
         }
