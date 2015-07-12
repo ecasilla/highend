@@ -39,12 +39,12 @@ export default class SocialSessions extends BaseComponent {
   render() {
     return (
         <div className="social">
-          <a href="#" className="facebook">
-            <i className="fa fa-facebook" /> &nbsp; {this.props.SessionType} onClick={this.facebook} with Facebook</a>
-          <a href="#" className="twitter">
-            <i className="fa fa-twitter" /> &nbsp;{this.props.SessionType} onClick={this.twitter} with Twitter</a>
-          <a href="#" className="google-plus">
-            <i className="fa fa-google-plus" /> &nbsp;{this.props.SessionType} onClick={this.google} with Google Plus</a>
+          <a href="#" className="facebook" onClick={this.facebook} >
+            <i className="fa fa-facebook" /> &nbsp; {this.props.SessionType} with Facebook</a>
+          <a href="#" className="twitter"  onClick={this.twitter} >
+            <i className="fa fa-twitter" /> &nbsp;{this.props.SessionType} with Twitter</a>
+          <a href="#" className="google-plus" onClick={this.google}>
+            <i className="fa fa-google-plus" /> &nbsp;{this.props.SessionType}  with Google Plus</a>
         </div>
     );
   }

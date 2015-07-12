@@ -3,13 +3,33 @@ import React from 'react';
 import {RouteHandler} from 'react-router';
 import FastClick from 'fastclick';
 import debug from 'debug';
+import BaseComponent from 'components/BaseComponent'
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+import PageTitleStore from 'stores/PageTitleStore';
+import PageActions from 'actions/PageTitleAction';
 
 require('./assets/styles/sass/app.scss');
 
-export default class App extends React.Component {
+export default class App extends BaseComponent {
   constructor (props) {
     super(props);
+    window.document.title = this.getTitle();
+    this._bind('onChange');
+  }
+
+  componentDidMount() {
+   PageTitleStore.addChangeListener(this.onChange)
+  }
+  componentWillUnmount() {
+    PageTitleStore.removeChangeListener(this.onChange);
+  }
+
+  getTitle() { 
+    return PageTitleStore.get_title()
+  }
+  onChange(){
+    debug('dev')("App is changing title")
+    window.document.title = this.getTitle();
   }
   render () {
     return (
@@ -34,7 +54,6 @@ let onSetMeta = (name, content) => {
 };
 
 App.contextTypes = {
-    onSetTitle: value => document.title = value,
     onSetMeta
   }
 

@@ -6,7 +6,7 @@ import debug from 'debug';
 let AppDispatcher = assign(new Dispatcher(),{
 
   handleServerAction: function(action) {
-  debug('dev')("handle Server Action: ", + JSON.stringify(action));
+  debug('dev')("Handle Server Action: ", action);
     var payload = {
       source: PayloadSources.SERVER_ACTION,
       action: action
@@ -15,7 +15,7 @@ let AppDispatcher = assign(new Dispatcher(),{
   },
 
   handleViewAction: function(action) {
-  debug('dev')("handle View Action: ", + JSON.stringify(action));
+  debug('dev')("Handle View Action: ", action);
     var payload = {
       source: PayloadSources.VIEW_ACTION,
       action: action

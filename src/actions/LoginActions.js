@@ -4,25 +4,25 @@ import LocalStorage from '../services/LocalStorage';
 
 export default {
   loginUser (user) {
-    RouterContainer.get().transitionTo('/dashboard');
     LocalStorage.save('user', user);
     AppDispatcher.dispatch({
       actionType: LOGIN_USER,
       user: user
     });
+    RouterContainer.get().transitionTo('/dashboard');
   },
   signup(user){
-    RouterContainer.get().transitionTo('/dashboard');
     AppDispatcher.dispatch({
       actionType: SIGN_UP,
       user: user
     });
+    RouterContainer.get().transitionTo('/dashboard');
   },
   logoutUser () {
-    RouterContainer.get().transitionTo('/login');
     LocalStorage.remove('user');
     AppDispatcher.dispatch({
       actionType: LOGOUT_USER
     });
+    RouterContainer.get().transitionTo('/login');
   }
 }

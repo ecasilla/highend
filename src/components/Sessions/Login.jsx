@@ -1,9 +1,10 @@
 import React from 'react/addons';
-import BaseComponent from '../BaseComponent';
 import ReactMixin from 'react-mixin';
 import {Checkbox} from 'material-ui';
-import SocialSessions from '../Shared/SocialSessions';
 import _ from 'lodash';
+import PageActions from '../../actions/PageTitleAction';
+import BaseComponent from '../BaseComponent';
+import SocialSessions from '../Shared/SocialSessions';
 import Input from '../Shared/Input';
 import Auth from '../../services/AuthService';
 
@@ -26,6 +27,7 @@ export default class Login extends BaseComponent {
   }
   componentWillMount(){
     window.document.body.classList.add('session-background');
+    PageActions.setTitle("Login");
   }
   componentWillUnmount(){
     window.document.body.classList.remove('session-background');
@@ -41,7 +43,6 @@ export default class Login extends BaseComponent {
 
   login (e) {
     e.preventDefault();
-    console.log(this.refs);
 
     var canProceed = this.validateEmail(this.state.email) && this.refs.password.isValid(); 
 
@@ -50,11 +51,11 @@ export default class Login extends BaseComponent {
         email: this.state.email,
         password: this.state.password
       };
-      console.log("LOGGED IN " + this.state.email);
+      debug('dev')("LOGGED IN " + this.state.email);
       // Here, we call an external AuthService. We’ll create it in the next step
       Auth.login(data)
       .catch(function(err) {
-        console.log('Error logging in', err);
+        debug('dev')('Error logging in', err);
       });
     } else {
       this.refs.email.isValid();
@@ -64,7 +65,6 @@ export default class Login extends BaseComponent {
 
   signup(event) {
     event.preventDefault();
-    console.log(this.context);
     this.context.router.transitionTo('/signup');
   }
 

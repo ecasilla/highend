@@ -17,12 +17,13 @@ module.exports = function(options) {
 
   return {
     entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './src/index'
     ],
     debug: !options.production,
     devtool: options.devtool,
+    cache:true,
     output: {
       path: options.production ? './dist' : path.join(__dirname,'./build'),
       filename: options.production ? 'app.[hash].js' : 'app.js',

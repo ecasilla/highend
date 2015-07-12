@@ -8,6 +8,7 @@ export default {
   }),
   ActionTypes: keyMirror({
     CHANGE_EVENT:null,
+    PAGE_TITLE:null,
     //Session
     LOGIN_REQUEST: null,
     LOGIN_RESPONSE: null
