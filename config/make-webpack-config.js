@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const RewirePlugin = require("rewire-webpack");
 
 module.exports = function(options) {
   var cssLoaders = 'style-loader!css-loader!';
@@ -89,7 +88,6 @@ module.exports = function(options) {
           "NODE_ENV": JSON.stringify("production")
         }
       }),
-      new RewirePlugin(),
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurenceOrderPlugin(),
