@@ -3,14 +3,14 @@ import sinon from 'sinon';
 
 describe('PageTitleAction: ', () => {
   let PageTitleAction;
-  let sanbox;
+  let sandbox;
 
   beforeEach(function() {
     PageTitleAction = require('../../actions/PageTitleAction.js');
     sandbox = sinon.sandbox.create();
   });
   afterEach(function(){
-    sandox = sinon.sandox.restore();
+    sandbox = sinon.sandox.restore();
   });
 
   it('should be defined', () => {
