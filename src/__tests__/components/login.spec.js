@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 
 import React from 'react/addons';
-import Login from '../components/Sessions/Login';
+import Login from '../../components/Sessions/Login';
 
 describe('Login Page', () => {
   it('displays the header', () => {

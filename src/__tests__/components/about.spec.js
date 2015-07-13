@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 
 import React from 'react/addons';
-import About from '../components/Home/About';
+import About from '../../components/Home/About';
 
 describe('About Page', () => {
   it('displays the header', () => {

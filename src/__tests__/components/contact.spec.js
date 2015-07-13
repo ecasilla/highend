@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 
 import React from 'react/addons';
-import Contact from '../components/Home/Contact';
+import Contact from '../../components/Home/Contact';
 
 describe('Contact Page', () => {
   it('displays the header', () => {

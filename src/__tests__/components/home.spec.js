@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 
 import React from 'react/addons';
-import Home from '../components/Home/Home';
+import Home from '../../components/Home/Home';
 
 describe('Home Page', () => {
   it('displays the header', () => {
