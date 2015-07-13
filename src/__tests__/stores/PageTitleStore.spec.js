@@ -1,18 +1,18 @@
 import CONSTANTS from '../../core/Constants';
 import sinon from 'sinon';
 
-describe('AuthService: ', () => {
-  let AuthService;
+describe('PageTitleStore: ', () => {
+  let store;
   let sandbox;
   beforeEach(() => {
-    AuthService = require('../../services/AuthService.js');
+    store = require('../../stores/PageTitleStore.js');
     sandbox = sinon.sandbox.create();
   });
   afterEach(() => {
-    AuthService = null;
+    store = null;
     sandbox = sinon.sandbox.restore();
   });
   it('should be defined', () => {
-    expect(AuthService).to.be.an('object');
+    expect(store).to.be.an('object');
   });
 });

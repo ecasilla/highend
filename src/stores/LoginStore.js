@@ -1,12 +1,13 @@
 import {ActionTypes} from '../core/Constants';
 import BaseStore from './BaseStore';
+import debug from 'debug';
 
 
 class LoginStore extends BaseStore {
 
   constructor() {
     super();
-    this.subscribe(() => this._registerToActions.bind(this))
+    this.subscribe(() => this._registerToActions.bind(this));
     this._user = null;
   }
 
@@ -24,7 +25,7 @@ class LoginStore extends BaseStore {
         break;
       default:
         break;
-    };
+    }
   }
 
   get user() {
