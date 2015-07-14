@@ -11,15 +11,20 @@ class LoginStore extends BaseStore {
     this._user = null;
   }
 
-  _registerToActions(action) {
-    switch(action.actionType) {
-      case ActionTypes.LOGIN_USER:
-        debug('dev')('Login Store action',action);
-        this._user = action.user;
+  _registerToActions(payload) {
+    switch(payload.action.actionType) {
+      case ActionTypes.LOGIN:
+        debug('dev')('Login Store action: LOGIN ',payload);
+        this._user = payload.action.user;
         this.emitChange();
         break;
-      case ActionTypes.LOGOUT_USER:
-      debug('dev')('Login Store action',action);
+      case ActionTypes.SIGN_UP:
+        debug('dev')('Login Store action: SIGNUP ',payload);
+        this._user = payload.action.user;
+        this.emitChange();
+        break;
+      case ActionTypes.LOGOUT:
+      debug('dev')('Login Store action: LOGOUT ',payload);
         this._user = null;
         this.emitChange();
         break;

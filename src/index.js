@@ -13,7 +13,6 @@ var paceOptions = {
   eventLag: true
 };
 
-Pace.stop();
 function RouterInit(Handler,state){
   if(window.hasOwnProperty('ga') && typeof window.ga === 'function') {
     window.ga('send', 'pageview', {

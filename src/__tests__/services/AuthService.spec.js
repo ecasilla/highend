@@ -1,5 +1,5 @@
-import CONSTANTS from '../../core/Constants';
 import sinon from 'sinon';
+import CONSTANTS from '../../core/Constants';
 
 describe('AuthService: ', () => {
   let AuthService;

@@ -33,19 +33,21 @@ class AuthService {
         email    : user.email,
         password : user.password
       }, (error, authData) => {
-        if (error || !userData) {
+        if (error || !authData) {
           debug('err')("Error login ", error);
           this.errorcheck(error);
+          return reject(err);
         }else{
           debug('dev')("Successfully logged in user account: ", authData);
-          LoginActions.loginUser(authData);
-          return true;
+          LoginActions.login(authData);
+          return resolve(authData);
         }
       });
     });
   }
 
   logout() {
+    debug('dev')("Successfully logged out user account: ", userData);
     FireBaseService.unauth();
     LoginActions.logoutUser();
   }
@@ -56,10 +58,11 @@ class AuthService {
         if (error || !userData) {
           debug('err')("Error signup ", error);
           this.errorcheck(error);
+          return reject(err);
         } else {
           debug('dev')("Successfully created user account: ", userData);
           LoginActions.signup(userData);
-          return true;
+          return resolve(userData);
         }
       });
     });
@@ -80,7 +83,7 @@ class AuthService {
         if (!err && user) {
           debug('dev')('Logged in with: ' + provider,user);
           LoginActions.login(user);
-          return true;
+          return resolve(user);
         }
       });
     });

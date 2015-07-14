@@ -1,4 +1,5 @@
 import React from 'react';
+import debug from 'debug';
 import LoginStore from '../../stores/LoginStore';
 
 export default (ComposedComponent) => {
@@ -6,6 +7,7 @@ export default (ComposedComponent) => {
 
     static willTransitionTo(transition) {
       if (!LoginStore.isLoggedIn()) {
+        debug('dev')('User not logged in redirecting to /login')
         transition.redirect('/login', {}, {'nextPath' : transition.path});
       }
     }

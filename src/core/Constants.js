@@ -10,8 +10,9 @@ export default {
     CHANGE_EVENT:null,
     PAGE_TITLE:null,
     //Session
-    LOGIN_REQUEST: null,
-    LOGIN_RESPONSE: null
+    LOGIN: null,
+    SIGNUP: null,
+    LOGOUT:null
   }),
   API:{
     BASE_URL:"https://flickering-inferno-6672.firebaseio.com/"
