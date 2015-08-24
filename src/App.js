@@ -3,7 +3,7 @@ import React from 'react';
 import {RouteHandler} from 'react-router';
 import FastClick from 'fastclick';
 import debug from 'debug';
-import BaseComponent from 'components/BaseComponent'
+import BaseComponent from 'components/BaseComponent';
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import PageTitleStore from 'stores/PageTitleStore';
 import PageActions from 'actions/PageTitleAction';
@@ -18,19 +18,19 @@ export default class App extends BaseComponent {
   }
 
   componentDidMount() {
-    debug('dev')("componentDidMount App")
-   PageTitleStore.addChangeListener(this.onChange)
+    debug('dev')("componentDidMount App");
+   PageTitleStore.addChangeListener(this.onChange);
   }
   componentWillUnmount() {
-    debug('dev')("componentWillUnmount App")
+    debug('dev')("componentWillUnmount App");
     PageTitleStore.removeChangeListener(this.onChange);
   }
 
   getTitle() { 
-    return PageTitleStore.get_title()
+    return PageTitleStore.get_title();
   }
   onChange(){
-    debug('dev')("App is changing title")
+    debug('dev')("App is changing title");
     window.document.title = this.getTitle();
   }
   render () {
@@ -57,7 +57,7 @@ let onSetMeta = (name, content) => {
 
 App.contextTypes = {
     onSetMeta
-  }
+  };
 
 // Run the application when both DOM is ready
 // and page content is loaded
