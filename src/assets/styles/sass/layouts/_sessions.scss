@@ -6,7 +6,6 @@
 .session-container{
   @include outer-container(100%);
   @include size(100% 100%);
-  overflow:hidden;
   .session {
     @include media($xlg-desktop){
       @include padding(10% null);

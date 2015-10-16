@@ -12,7 +12,9 @@
 @import "layouts/layouts";
 
 html{
-  @include background(linear-gradient($grey-200, $grey-400) left repeat);
+  @include background(linear-gradient(45deg,#0077b5,#008891));
+  background-attachment: fixed;
+  background-color: #0077b5;
 }
 #app{
    @include outer-container;

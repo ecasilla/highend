@@ -36,7 +36,7 @@ class AuthService {
         if (error || !authData) {
           debug('err')("Error login ", error);
           this.errorcheck(error);
-          return reject(err);
+          return reject(error);
         }else{
           debug('dev')("Successfully logged in user account: ", authData);
           LoginActions.login(authData);
@@ -58,7 +58,7 @@ class AuthService {
         if (error || !userData) {
           debug('err')("Error signup ", error);
           this.errorcheck(error);
-          return reject(err);
+          return reject(error);
         } else {
           debug('dev')("Successfully created user account: ", userData);
           LoginActions.signup(userData);

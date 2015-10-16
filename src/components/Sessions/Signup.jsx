@@ -6,6 +6,7 @@ import debug from 'debug';
 import PageActions from '../../actions/PageTitleAction';
 import BaseComponent from '../BaseComponent';
 import SocialSessions from '../Shared/SocialSessions';
+import Header from '../Shared/Header';
 import Input from '../Shared/Input';
 import Auth from '../../services/AuthService';
 
@@ -24,6 +25,7 @@ export default class Signup extends BaseComponent {
     'login',
     'signup'
     );
+
     this.state = {
       email: null,
       password: null,
@@ -33,16 +35,9 @@ export default class Signup extends BaseComponent {
       forbiddenWords: ["password", "user", "username"]
     };
   }
-  componentWillMount(){
-      window.document.body.classList.add('session-background');
-  }
   componentDidMount(){
     PageActions.setTitle("Sign Up");
   }
-  componentWillUnmount(){
-      window.document.body.classList.remove('session-background');
-  }
-
   handlePasswordInput (event) {
     if(!_.isEmpty(this.state.confirmPassword)){
       this.refs.passwordConfirm.isValid();
@@ -119,6 +114,8 @@ export default class Signup extends BaseComponent {
 
   render() {
     return (
+<div>
+  <Header/>
     <div className="session-container">
       <div className="session">
         {/* Login Form */}
@@ -194,6 +191,7 @@ export default class Signup extends BaseComponent {
         </div>
       </div>
     </div>
+  </div>
     );
   }
 }

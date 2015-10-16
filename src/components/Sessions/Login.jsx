@@ -3,11 +3,12 @@ import ReactMixin from 'react-mixin';
 import {Checkbox} from 'material-ui';
 import _ from 'lodash';
 import debug from 'debug';
+import Auth from '../../services/AuthService';
 import PageActions from '../../actions/PageTitleAction';
 import BaseComponent from '../BaseComponent';
 import SocialSessions from '../Shared/SocialSessions';
 import Input from '../Shared/Input';
-import Auth from '../../services/AuthService';
+import Header from '../Shared/Header';
 
 export default class Login extends BaseComponent {
 
@@ -27,13 +28,13 @@ export default class Login extends BaseComponent {
     };
   }
   componentWillMount(){
-    window.document.body.classList.add('session-background');
+//window.document.body.classList.add('session-background');
   }
   componentDidMount(){
     PageActions.setTitle("Login");
   }
   componentWillUnmount(){
-    window.document.body.classList.remove('session-background');
+//  window.document.body.classList.remove('session-background');
   }
   handlePasswordInput (event) {
     if(!_.isEmpty(this.state.password)){
@@ -57,9 +58,12 @@ export default class Login extends BaseComponent {
       debug('dev')("LOGGED IN " + this.state.email);
       // Here, we call an external AuthService. We’ll create it in the next step
       Auth.login(data)
+      .then(function() {
+        alert("Your logged In")
+      })
       .catch(function(err) {
         debug('dev')('Error logging in', err);
-      });
+      })
     } else {
       this.refs.email.isValid();
       this.refs.password.isValid();
@@ -89,6 +93,8 @@ export default class Login extends BaseComponent {
 
   render() {
     return (
+      <div>
+      <Header/>
       <div className="session-container">
       <div className="session">
       {/* Login Form */}
@@ -134,6 +140,7 @@ export default class Login extends BaseComponent {
       <button className="button" label="Sign Up" onClick={this.signup} >Sign In</button>
       </form>
       <SocialSessions SessionType="Login"/>
+      </div>
       </div>
       </div>
       </div>

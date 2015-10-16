@@ -14,7 +14,11 @@ export default class Home extends React.Component {
     return (
       <div>
         <Header/>
-        <h1>Home?</h1>
+        <div className="container">
+          <div className="hero">
+          <h1>Home Page goes Here!</h1>
+         </div>
+        </div>
       </div>
     );
   }
